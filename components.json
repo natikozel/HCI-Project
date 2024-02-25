@@ -1,0 +1,17 @@
+
+
+{
+  "style": "default",
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/output.css",
+    "baseColor": "zinc",
+    "cssVariables": true
+  },
+  "rsc": false,
+  "tsx": true,
+  "aliases": {
+    "components": "/src/components",
+    "utils": "/src/ui/utils"
+  }
+}

@@ -24,63 +24,64 @@ export const WelcomePage: FC<Props> = memo(function GalileoDesign(props = {}) {
                             <div className={classes.depth3Frame}>
                                 <div className={classes.depth4Frame}>
                                     <div className={classes.depth5Frame}>
-                                        <div className={classes.vector}>
-                                            <VectorIcon className={classes.icon}/>
-                                        </div>
+                                        {/*<div className={classes.vector}>*/}
+                                        {/*    <VectorIcon className={classes.icon}/>*/}
+                                        {/*</div>*/}
                                         <div className={classes.depth6Frame}></div>
                                     </div>
                                 </div>
                             </div>
                             <div className={classes.depth3Frame1}>
-                                <div className={classes.depth4Frame2}>
-                                    <div className={classes.depth5Frame2}>
-                                        <div className={classes.welcomeToYourHomeManagementApp}>Welcome to your home
-                                            management app
-                                        </div>
-                                    </div>
-                                </div>
+                                {/*<div className={classes.depth4Frame2}>*/}
+                                {/*    <div className={classes.depth5Frame2}>*/}
+                                        <h1
+                                            className={classes.welcomeToYourHomeManagementApp}>
+                                            ברוכים השבים לסוויפט הום!
+                                        </h1>
+                                    {/*</div>*/}
+                                {/*</div>*/}
                             </div>
-                            <div className={classes.depth3Frame2}>
-                                <div className={classes.depth4Frame3}></div>
-                            </div>
+                            {/*<div className={classes.depth3Frame2}>*/}
+                            {/*    <div className={classes.depth4Frame3}></div>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                     <div className={classes.depth1Frame1}>
                         <div className={classes.depth2Frame2}>
-                            <div className={classes.whatWouldYouLikeToDoToday}>What would you like to do today?</div>
+                            <div className={classes.whatWouldYouLikeToDoToday}>איך אפשר לעזור לך היום?</div>
                         </div>
                     </div>
                     <div className={classes.depth1Frame2}>
                         <div className={classes.depth2Frame3}>
-                            <div className={classes.youCanCreateANewProcessOrConti}>
-                                You can create a new process or continue with an existing one.
-                            </div>
+                            <h4 className={classes.youCanCreateANewProcessOrConti}>
+                                האם ברצונך להתחיל תהליך חדש או להמשיך תהליך קיים?
+                            </h4>
                         </div>
                     </div>
                     <div className={classes.depth1Frame3}>
                         <div className={classes.depth2Frame4}>
-                            <div className={classes.depth3Frame3}>
+                            <button className={classes.depth3Frame3} onClick={() => { navigate('/create')}}>
                                 <div className={classes.depth4Frame4}>
                                     <div className={classes.depth5Frame3}>
                                         <div className={classes.depth6Frame2}>
-                                            <button className={classes.createNewProcess}
-                                                    onClick={() => { navigate('/create')}}>
-                                                Create New Process
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={classes.depth3Frame12}>
-                                <div className={classes.depth4Frame5}>
-                                    <div className={classes.depth5Frame4}>
-                                        <div className={classes.depth6Frame3}>
-                                            <div className={classes.continueExistingProcess}>Continue Existing Process
+                                            <div className={classes.createNewProcess}>
+                                                צור תהליך חדש
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </button>
+                            <button className={classes.depth3Frame12} onClick={() => { navigate('/create')}}>
+                                <div className={classes.depth4Frame5}>
+                                    <div className={classes.depth5Frame4}>
+                                        <div className={classes.depth6Frame3}>
+                                            <div className={classes.continueExistingProcess}>
+                                                המשך תהליך קיים
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
                         </div>
                     </div>
                     <div className={classes.depth1Frame4}></div>

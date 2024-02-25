@@ -1,10 +1,22 @@
 import {memo} from 'react';
 import type {FC} from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import classes from './App.module.css';
-import resets from './components/_resets.module.css';
 import {WelcomePage} from './components/WelcomePage/WelcomePage';
 import {NewProcess} from "./components/NewProcess/NewProcess";
+import {Input} from "./components/ui/input";
+import {Button} from "./components/ui/button";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {useForm} from 'react-hook-form';
+import {z} from "zod";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "./components/ui/form";
 
 interface Props {
     className?: string;
@@ -13,19 +25,23 @@ interface Props {
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <WelcomePage/>
+        element: <WelcomePage/>,
     },
     {
         path: '/create',
         element: <NewProcess/>
-    }
+    },
 ]);
 
 
-export const App: FC<Props> = memo(function App(props = {}) {
+const App: FC<Props> = memo(function App(props = {}) {
+
+
     return (
-        <div className={`${resets.storybrainResets} ${classes.root}`}>
+        <div>
             <RouterProvider router={router}/>
         </div>
     );
 });
+
+export default App;
