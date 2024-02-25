@@ -66,7 +66,7 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                 <div className={classes.depth5Frame3}>
                                     {/*<div className={classes.depth6Frame2}>*/}
                                     {/*    <div className={classes.depth7Frame}>*/}
-                                    <input placeholder={"הזן את מספר הזהות שלך כאן"}
+                                    <input type="number" placeholder={"הזן את מספר הזהות שלך כאן"}
                                            className={classes.enterYourAccountHolderID}>
                                     </input>
                                     {/*</div>*/}
