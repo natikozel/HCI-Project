@@ -71,7 +71,7 @@ export const WelcomePage: FC<Props> = memo(function GalileoDesign(props = {}) {
                                     </div>
                                 </div>
                             </button>
-                            <button className={classes.depth3Frame12} onClick={() => { navigate('/create')}}>
+                            <button className={classes.depth3Frame12} onClick={() => { navigate('/continue')}}>
                                 <div className={classes.depth4Frame5}>
                                     <div className={classes.depth5Frame4}>
                                         <div className={classes.depth6Frame3}>

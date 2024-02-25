@@ -3,21 +3,8 @@ import type {FC} from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {WelcomePage} from './components/WelcomePage/WelcomePage';
 import {NewProcess} from "./components/NewProcess/NewProcess";
-import {Input} from "./components/ui/input";
-import {Button} from "./components/ui/button";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {useForm} from 'react-hook-form';
-import {z} from "zod";
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "./components/ui/form";
-
+import {ContinueProcess} from "./components/ContinueProcess/ContinueProcess";
+import {MyProcessList} from "./components/BACKUP/MyProcessList"
 interface Props {
     className?: string;
 }
@@ -30,6 +17,14 @@ const router = createBrowserRouter([
     {
         path: '/create',
         element: <NewProcess/>
+    },
+    {
+        path: '/continue',
+        element: <ContinueProcess/>
+    },
+    {
+        path: '/myProcess',
+        element: <MyProcessList/>
     },
 ]);
 
