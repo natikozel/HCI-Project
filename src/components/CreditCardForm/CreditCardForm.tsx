@@ -105,7 +105,7 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({ onSubmit 
 
                 <div className={classes.ardetails}>
                     <div className={classes.detailsss}>
-                        <div style={{direction: "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
+                        <div style={{direction: "rtl"}} className={classes.cfont}>
                             חכה שנייה... עם מה נשלם?
                         </div>
                     </div>

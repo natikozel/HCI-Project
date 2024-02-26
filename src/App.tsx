@@ -39,9 +39,7 @@ const App: FC<Props> = memo(function App(props = {}) {
 
 
     return (
-        <div>
-            <RouterProvider router={router}/>
-        </div>
+        <RouterProvider router={router}/>
     );
 });
 
