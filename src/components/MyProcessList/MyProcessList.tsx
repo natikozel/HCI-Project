@@ -32,8 +32,8 @@ export const MyProcessList: FC<Props> = memo(function GalileoDesign(props = {}) 
     const alrPaid = myProgress.taxes.filter((tax: any) => tax.paid);
     const finishedAll = useState(blueBarWidth === 350);
 
-    if (finishedAll)
-        return <FinishedAll/>;
+    // if (finishedAll)
+    //     return <FinishedAll/>;
 
     if (!isActive)
         return <CreditCardForm onSubmit={setIsActive}/>;
