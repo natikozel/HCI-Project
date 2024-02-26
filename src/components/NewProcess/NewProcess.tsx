@@ -184,26 +184,26 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
+                <br/>
                 <div className={classes.depth1Frame5}>
                     <div className={classes.depth2Frame6}>
                         <div className={classes.leavingEnteringDate}>{dateTitle}</div>
                     </div>
                 </div>
                 <div className={classes.depth1Frame6}>
-                    <div className={classes.depth2Frame7}>
-                        <div className={classes.depth3Frame5}>
-                            <div className={classes.depth4Frame1}>
+                    {/*<div className={classes.depth2Frame7}>*/}
+                    {/*    <div className={classes.depth3Frame5}>*/}
+                            {/*<div className={classes.depth4Frame1}>*/}
                                 <div className={classes.depth5Frame6}>
-                                    <div className={classes.depth6Frame3}>
-                                        <div className={classes.depth7Frame2}>
-                                            <input className={"dates"} type={"date"}
+                                    {/*<div className={classes.depth6Frame3}>*/}
+                                    {/*    <div className={classes.depth7Frame2}>*/}
+                                            <input className={classes.dates} type={"date"}
                                                    onChange={(date: any) => {
                                                        setDate(date.target);
                                                        setIsFailed(false);
                                                    }}/>
-                                            {/*<div className={classes.mMDDYYYY}>DD/MM/YYYY</div>*/}
-                                        </div>
-                                    </div>
+                                        {/*</div>*/}
+                                    {/*</div>*/}
                                     <div className={classes.depth6Frame1}>
                                         <div className={classes.depth7Frame3}>
                                             <div className={classes.vector2}>
@@ -213,11 +213,11 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
                 </div>
-                <div className={classes.depth1Frame7}></div>
+                <br/><br/><br/><br/><br/><br/><br/>
 
                 <div className={classes.depth1Frame8}>
                     <button className={classes.depth2Frame8} onClick={onSubmit}>

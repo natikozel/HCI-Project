@@ -1,6 +1,6 @@
-import {memo} from 'react';
+import {memo, useState} from 'react';
 import type {FC} from 'react';
-
+import 'animate.css';
 import resets from '../_resets.module.css';
 import classes from './GalileoDesign.module.css';
 import {VectorIcon} from './VectorIcon';
@@ -10,82 +10,117 @@ interface Props {
     className?: string;
 }
 
-/* @figmaId 3:2 */
-export const WelcomePage: FC<Props> = memo(function GalileoDesign(props = {}) {
+/* @figmaId 50:2 */
+export const WelcomePage: FC<Props> = memo(function WelcomePage(props = {}) {
 
     const navigate = useNavigate();
+    const [animation, setAnimation] : any= useState();
+    const swipeRight = `${classes.depth4Frame12} ${animation?.includes('Right') ? animation : null}`
+    const swipeLeft = `${classes.depth4Frame4} ${animation?.includes('Left') ? animation : null}`
 
+    const payTaxes = () => {
+        setTimeout(() => navigate('/continue'), 700);
+        setAnimation("animate__animated animate__slideOutRight");
+    };
+
+    const changeAddress = () => {
+        setTimeout(() => navigate('/continue'), 700);
+        setAnimation("animate__animated animate__slideOutLeft");
+    };
     return (
-        <div className={`${resets.flex}`}>
-            <div className={`${resets.storybrainResets} ${classes.root}`}>
-                <div className={classes.depthFrame}>
-                    <div className={classes.depth1Frame}>
-                        <div className={classes.depth2Frame}>
-                            <div className={classes.depth3Frame}>
-                                <div className={classes.depth4Frame}>
-                                    <div className={classes.depth5Frame}>
-                                        {/*<div className={classes.vector}>*/}
-                                        {/*    <VectorIcon className={classes.icon}/>*/}
-                                        {/*</div>*/}
-                                        <div className={classes.depth6Frame}></div>
+        <div className={`${resets.storybrainResets} ${classes.root}`}>
+            <div className={classes.depthFrame}>
+                <div className={classes.depth1Frame1}>
+                    <div className={classes.depth2Frame2}>
+                        <div className={classes.depth3Frame2}>
+                            <div className={classes.depth4Frame2}>
+                                <div className={classes.depth5Frame2}>
+                                    <div className={classes.depth6Frame2}>
+                                        <br/><br/><br/><br/>
+                                        <div className={classes.depth7Frame2}>
+                                            <div style={{direction: "rtl"}}
+                                                 className={classes.payYourRentBillsAndMoreWithACr}>
+                                                {`שלם את מיסי הבית שלך בלחיצת כפתור`}
+                                                {/*Pay your bills within one click*/}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className={classes.depth3Frame1}>
-                                {/*<div className={classes.depth4Frame2}>*/}
-                                {/*    <div className={classes.depth5Frame2}>*/}
-                                        <h1
-                                            className={classes.welcomeToYourHomeManagementApp}>
-                                            ברוכים השבים לסוויפט הום!
-                                        </h1>
-                                    {/*</div>*/}
-                                {/*</div>*/}
-                            </div>
-                            {/*<div className={classes.depth3Frame2}>*/}
-                            {/*    <div className={classes.depth4Frame3}></div>*/}
-                            {/*</div>*/}
-                        </div>
-                    </div>
-                    <div className={classes.depth1Frame1}>
-                        <div className={classes.depth2Frame2}>
-                            <div className={classes.whatWouldYouLikeToDoToday}>איך אפשר לעזור לך היום?</div>
-                        </div>
-                    </div>
-                    <div className={classes.depth1Frame2}>
-                        <div className={classes.depth2Frame3}>
-                            <h4 className={classes.youCanCreateANewProcessOrConti}>
-                                האם ברצונך להתחיל תהליך חדש או להמשיך תהליך קיים?
-                            </h4>
-                        </div>
-                    </div>
-                    <div className={classes.depth1Frame3}>
-                        <div className={classes.depth2Frame4}>
-                            <button className={classes.depth3Frame3} onClick={() => { navigate('/create')}}>
-                                <div className={classes.depth4Frame4}>
-                                    <div className={classes.depth5Frame3}>
-                                        <div className={classes.depth6Frame2}>
-                                            <div className={classes.createNewProcess}>
-                                                צור תהליך חדש
+                                    <div className={classes.depth6Frame1}>
+                                        <div className={classes.depth7Frame3}>
+                                            <br/>
+                                            <div className={classes.earnPointsOrMilesOnYourRentAnd}>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </button>
-                            <button className={classes.depth3Frame12} onClick={() => { navigate('/continue')}}>
-                                <div className={classes.depth4Frame5}>
-                                    <div className={classes.depth5Frame4}>
-                                        <div className={classes.depth6Frame3}>
-                                            <div className={classes.continueExistingProcess}>
-                                                המשך תהליך קיים
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </button>
+                            </div>
                         </div>
                     </div>
-                    <div className={classes.depth1Frame4}></div>
                 </div>
+                <div className={classes.depth1Frame2}>
+                    <div className={classes.depth2Frame3}>
+                        <div className={classes.depth3Frame3}>
+                            <div className={classes.depth4Frame3}>
+                                <div className={classes.depth5Frame3}>
+                                    <div className={classes.depth6Frame3}>
+                                        <div style={{direction: "rtl"}} className={classes.getTheMostOutOfYourHome}>
+                                            {"סוויפט-הום הופכת את טרחת תשלום המיסים לעניין של שניות!"}
+                                            {/*SwiftHome makes your bills payment chore to a matter of seconds*/}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={classes.depth5Frame1}>
+                                    {/*<div className={classes.depth6Frame4}>*/}
+                                    <div style={{direction: "rtl"}} className={classes.subtitle}>
+                                        {"לא רשום עדיין?"}
+                                    </div>
+                                    {/*</div>*/}
+                                </div>
+                            </div>
+                            <div className={classes.depth4Frame1}>
+                                <button className={classes.depth5Frame4} onClick={() => navigate('/create')}>
+                                    <div className={classes.depth6Frame5}>
+                                        <div className={classes.depth7Frame4}>
+                                            <div className={classes.depth8Frame2}>
+                                                <div style={{direction: "rtl"}} className={classes.signUp}>הירשם</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <br/><br/>
+                        <div className={classes.helper}>
+                            <div className={classes.subtitle}>
+                                {"משתמש קיים?"}
+                            </div>
+                        </div>
+                        <div className={classes.depth3Frame12}>
+                            <div className={swipeLeft} onClick={changeAddress}>
+                                <div className={classes.depth5Frame5}>
+                                    <div className={classes.depth6Frame6}></div>
+                                </div>
+                                <div className={classes.depth5Frame12}>
+                                    <div className={classes.depth6Frame7}>
+                                        <div style={{direction: "rtl"}} className={classes.payRent}>שנה כתובת מגורים
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button className={swipeRight} onClick={payTaxes}>
+                                <div className={classes.depth5Frame6}>
+                                    <div className={classes.depth6Frame8}></div>
+                                </div>
+                                <div className={classes.depth5Frame13}>
+                                    <div className={classes.depth6Frame9}>
+                                        <div style={{direction: "rtl"}} className={classes.payBills}>שלם מיסים</div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className={classes.depth1Frame4}></div>
             </div>
         </div>
     );

@@ -1,11 +1,11 @@
 import {memo} from 'react';
 import type {FC} from 'react';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {WelcomePage} from './components/WelcomePage/WelcomePage';
 import {NewProcess} from "./components/NewProcess/NewProcess";
 import {ContinueProcess} from "./components/ContinueProcess/ContinueProcess";
 import {MyProcessList} from "./components/MyProcessList/MyProcessList";
 import {MyTaxes} from "./components/MyTaxes/MyTaxes";
+import {WelcomePage} from "./components/WelcomePage/WelcomePage";
 
 interface Props {
     className?: string;
