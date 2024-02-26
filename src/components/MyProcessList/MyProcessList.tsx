@@ -8,7 +8,7 @@ import {VectorIcon3} from './VectorIcon3';
 import {VectorIcon} from './VectorIcon';
 import {useNavigate, useParams} from "react-router-dom";
 import {CreditCardForm} from "../CreditCardForm/CreditCardForm";
-import {FinishedAll} from "../FinishedAll/FinishedAll"
+import {FinishedAll} from "../FinishedAll/FinishedAll";
 
 interface Props {
     className?: string;
@@ -30,10 +30,9 @@ export const MyProcessList: FC<Props> = memo(function GalileoDesign(props = {}) 
             blueBarWidth += blueBarPerTax;
     });
     const alrPaid = myProgress.taxes.filter((tax: any) => tax.paid);
-    const finishedAll = useState(blueBarWidth === 350);
-
-    // if (finishedAll)
-    //     return <FinishedAll/>;
+    const finishedAll = blueBarWidth === 350;
+    if (finishedAll)
+        return <FinishedAll/>;
 
     if (!isActive)
         return <CreditCardForm onSubmit={setIsActive}/>;
