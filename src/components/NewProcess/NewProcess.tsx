@@ -17,11 +17,12 @@ interface Props {
 export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
     const cookies = new Cookies();
     const navigate = useNavigate();
-    const [id, setId] : any = useState();
+    const [id, setId]: any = useState();
     const [status, setStatus] = useState("דייר יוצא");
     const [dateTitle, setDateTitle] = useState("תאריך יציאה");
     const [date, setDate]: any = useState();
     const [isFailed, setIsFailed] = useState(false);
+    const [used, setUsed] = useState(false);
 
     const onStatusChange = (e: any) => {
         setStatus(e.target.textContent);
@@ -35,12 +36,50 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
     };
 
     const onSubmit = () => {
-        if (!id || id!.toString().length !== 9  || !status || !date) {
+        if (!id || id!.toString().length !== 9 || !status || !date) {
             setIsFailed(true);
             return;
         }
-        const myCookie = {id, status, date: date!.value!};
+        if (!!cookies.get(id)) {
+            setUsed(true);
+            return;
+        }
+        const myCookie = {
+            id,
+            status,
+            date: date!.value!,
+            payment: false,
+            card: null,
+            taxes: [
+                {
+                    name: "ארנונה מקרקעין",
+                    amount: 170,
+                    paid: false,
+                },
+                {
+                    name: "שבח",
+                    amount: 350,
+                    paid: false,
+                },
+                {
+                    name: "רכוש",
+                    amount: 100,
+                    paid: false,
+                },
+                {
+                    name: "מים",
+                    amount: 75,
+                    paid: false,
+                },
+                {
+                    name: "חשמל",
+                    amount: 850,
+                    paid: false,
+                },
+            ],
+        };
         cookies.set(id!, JSON.stringify(myCookie));
+        navigate(`/myProcess/${myCookie.id}`);
     };
 
     return (
@@ -74,6 +113,7 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                     <div className={classes.depth2Frame2}>
                         <div className={classes.toGetStartedWeLlNeedAFewDetail}>
                             {isFailed ? "...אופס! כנראה שכחנו משהו בטעות" : null}
+                            {used ? "למספר זהות זה כבר משוייך תהליך, אנא בדוק פרטיך." : null}
                         </div>
                     </div>
                 </div>
@@ -90,10 +130,14 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                 <div className={classes.depth5Frame3}>
                                     {/*<div className={classes.depth6Frame2}>*/}
                                     {/*    <div className={classes.depth7Frame}>*/}
-                                    <input required minLength={9} maxLength={9} onChange={onIdChange} value={id} type="number"
+                                    <input required minLength={9} maxLength={9} onChange={onIdChange} value={id}
+                                           type="number"
                                            placeholder={"הזן את מספר הזהות שלך כאן"}
                                            className={classes.enterYourAccountHolderID}
-                                           onFocus={() => setIsFailed(false)}
+                                           onFocus={() => {
+                                               setIsFailed(false);
+                                               setUsed(false);
+                                           }}
                                     >
                                     </input>
                                     {/*</div>*/}
@@ -153,7 +197,10 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                     <div className={classes.depth6Frame3}>
                                         <div className={classes.depth7Frame2}>
                                             <input className={"dates"} type={"date"}
-                                                   onChange={(date: any) => { setDate(date.target); setIsFailed(false) }}/>
+                                                   onChange={(date: any) => {
+                                                       setDate(date.target);
+                                                       setIsFailed(false);
+                                                   }}/>
                                             {/*<div className={classes.mMDDYYYY}>DD/MM/YYYY</div>*/}
                                         </div>
                                     </div>

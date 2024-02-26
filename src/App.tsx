@@ -4,7 +4,9 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {WelcomePage} from './components/WelcomePage/WelcomePage';
 import {NewProcess} from "./components/NewProcess/NewProcess";
 import {ContinueProcess} from "./components/ContinueProcess/ContinueProcess";
-import {MyProcessList} from "./components/BACKUP/MyProcessList"
+import {MyProcessList} from "./components/MyProcessList/MyProcessList";
+import {MyTaxes} from "./components/MyTaxes/MyTaxes";
+
 interface Props {
     className?: string;
 }
@@ -23,8 +25,12 @@ const router = createBrowserRouter([
         element: <ContinueProcess/>
     },
     {
-        path: '/myProcess',
+        path: '/myProcess/:myId',
         element: <MyProcessList/>
+    },
+    {
+        path: '/myProcess/:myId/mytaxes',
+        element: <MyTaxes/>
     },
 ]);
 

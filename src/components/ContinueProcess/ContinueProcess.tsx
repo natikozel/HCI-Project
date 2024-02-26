@@ -3,7 +3,6 @@ import type {FC} from 'react';
 import Cookies from "universal-cookie";
 import resets from '../_resets.module.css';
 import classes from './GalileoDesign.module.css';
-import {VectorIcon2} from './VectorIcon2';
 import {VectorIcon} from './VectorIcon';
 import {useNavigate} from "react-router-dom";
 
@@ -26,8 +25,9 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
     };
 
     const onSubmit = () => {
-        if (cookies.get(id))
-            navigate('/myProcess')
+        if (cookies.get(id)) {
+            navigate(`/myProcess/${id}`)
+        }
         else
             setAlertMessage(true);
     };
@@ -92,8 +92,11 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
                 </div>
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
-                        <div className={classes.toGetStartedWeLlNeedAFewDetail}>
-                            {alertMessage ? "מוזר... לא הצלחנו למצוא עליך כלום. רוצה לנסות שוב?" : null }
+                        <div style={{direction : "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
+                            {alertMessage ?
+                                "לא הצלחנו למצוא עליך כלום." + "\n" +
+                                "בדוק את מספר הזהות."
+                                : null }
                         </div>
                     </div>
                 </div>

@@ -135,7 +135,9 @@ input::-webkit-inner-spin-button {
   height: 48px;
   place-content: flex-end;
 }
-
+input:focus {
+  outline: none;
+}
 .depth1Frame1 {
   width: 390px;
   height: 59.5px;
@@ -427,7 +429,7 @@ input::-moz-placeholder {
   align-items: flex-end;
 }
 
-.depth3Frame5 {
+.graybar {
   width: 358px;
   height: 88px;
   flex-direction: column;
