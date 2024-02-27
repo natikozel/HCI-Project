@@ -23,9 +23,7 @@ export const FinishedAddressEdit: FC<Props> = memo(function GalileoDesign(props 
                         <div className={classes.depth3Frame}>
                             <div className={classes.depth4Frame}>
                                 <div className={classes.depth5Frame}>
-                                    <div className={classes.vector}>
-                                        <VectorIcon className={classes.icon}/>
-                                    </div>
+
                                     <div className={classes.depth6Frame}></div>
                                 </div>
                             </div>
@@ -55,21 +53,38 @@ export const FinishedAddressEdit: FC<Props> = memo(function GalileoDesign(props 
                         <div style={{direction: "rtl"}} className={classes.success}>בקשה נשלחה</div>
                     </div>
                 </div>
-                <div className={classes.depth1Frame3}>
-                    {/*<div className={classes.depth2Frame4}>*/}
-                    <h3 style={{direction: "rtl", textWrap: "wrap"}} className={classes.cfont}>
-                        עיבדנו את הבקשה שלך לשינוי כתובת וכרגע היא בתהליכים מול הגורמים הרלוונטים.
-                    </h3>
-                    {/*</div>*/}
-                </div>
-                <br/><br/>
-                <div className={classes.depth1Frame3}>
-                    {/*<div className={classes.depth2Frame4}>*/}
-                    <h3 style={{direction: "rtl", textWrap: "wrap"}} className={classes.cfont2}>נעדכן אותך במייל כאשר
-                        יתקבלו פרטים נוספים.</h3>
 
-                    {/*</div>*/}
+
+                <div className={classes.t1}>
+                    <div className={classes.t2}>
+                        <div style={{direction: "rtl"}} className={classes.t3}>
+                            {"עיבדנו את הבקשה שלך לשינוי כתובת וכרגע היא בתהליכים מול הגורמים הרלוונטים."}
+                        </div>
+                        <br/>
+                        <div style={{direction: "rtl"}} className={classes.t3}>
+                            {"נעדכן אותך במייל על האישור או הדחייה."}
+                        </div>
+                    </div>
                 </div>
+                <br/><br/><br/>
+
+
+                {/*<div className={classes.depth1Frame3}>*/}
+                {/*    /!*<div className={classes.depth2Frame4}>*!/*/}
+                {/*    <h3 style={{direction: "rtl", textWrap: "wrap"}} className={classes.cfont}>*/}
+                {/*        עיבדנו את הבקשה שלך לשינוי כתובת וכרגע היא בתהליכים מול הגורמים הרלוונטים.*/}
+                {/*    </h3>*/}
+                {/*    /!*</div>*!/*/}
+                {/*</div>*/}
+                {/*<br/><br/>*/}
+                {/*<div className={classes.depth1Frame3}>*/}
+                {/*    /!*<div className={classes.depth2Frame4}>*!/*/}
+                {/*    <h3 style={{direction: "rtl", textWrap: "wrap"}} className={classes.cfont2}>נעדכן אותך במייל כאשר
+
+                */}{/*        יתקבלו פרטים נוספים.</h3>*/}
+
+                {/*    /!*</div>*!/*/}
+                {/*</div>*/}
 
                 <br/><br/><br/><br/><br/><br/><br/>
                 <div className={classes.depth1Frame5}>

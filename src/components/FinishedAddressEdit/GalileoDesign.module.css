@@ -305,6 +305,42 @@
     overflow: hidden;
 }
 
+.t1 {
+    width: 390px;
+    height: 64px;
+    flex-direction: column;
+    padding: 4px 16px 12px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.t2 {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+    height: min-content;
+    align-self: stretch;
+    flex-direction: column;
+    align-items: center;
+}
+
+.t3 {
+    /*color: #fff;*/
+    font-size: 16px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 24px;
+    font-family: Be Vietnam Pro, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+    /*width: min-content;*/
+    height: min-content;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .depth4Frame5 {
     width: min-content;
     height: min-content;

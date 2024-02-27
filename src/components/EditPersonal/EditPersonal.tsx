@@ -38,7 +38,7 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
             return {
                 ...user,
                 status: e.target.textContent
-            }
+            };
         });
     };
 
@@ -86,13 +86,12 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
 
 
     const handleInputFocus = (e: any) => {
-        setError({
-            name: false,
-            id: false,
-            email: false,
-            city: false,
-            street: false,
-            zipcode: false,
+        console.log(e.target.name);
+        setError(prevState =>{
+            return {
+                ...prevState,
+                [e.target.name]: false
+            }
         });
     };
 
@@ -137,64 +136,63 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
+
+
+
                 <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div className={classes.depth3Frame3}>
-                            <div className={classes.depth4Frame4}>
-                                <div style={{direction: "rtl"}} className={classes.firstName}>שם מלא</div>
-                            </div>
-                            <div style={{direction: "rtl"}} className={classes.cfont}>
-                                {error.name ?
-                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
-                                        {"שדה זה חייב להכיל את שמך"}
-                                    </h1>
-                                    : null
-                                }
-                            </div>
-                            <div className={classes.depth4Frame1}>
-                                <div className={classes.depth5Frame3}>
-                                    {/*<div className={classes.depth6Frame2}>*/}
-                                    <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                                        <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                               name={"name"} onFocus={handleInputFocus}
-                                               value={user.name} onChange={editInput}/>
-                                        {/*<div className={classes.ellis}>Ellis</div>*/}
-                                    </div>
-                                    {/*</div>*/}
-                                </div>
-                            </div>
+                    <div className={classes.depth3Frame3}>
+                        <div style={{direction: "rtl"}} className={classes.firstName}>שם מלא</div>
+                    </div>
+                </div>
+
+                <div style={{direction: "rtl"}}>
+                    {error.name ?
+                        <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                            {"שדה זה חייב להכיל את שמך"}
+                        </h1>
+                        : null
+                    }
+                </div>
+                <div className={classes.depth4Frame1}>
+                    <div className={classes.depth5Frame3}>
+                        {/*<div className={classes.depth6Frame2}>*/}
+                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
+                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
+                                   name={"name"} onFocus={handleInputFocus}
+                                   value={user.name} onChange={editInput}/>
+                            {/*<div className={classes.ellis}>Ellis</div>*/}
                         </div>
+                        {/*</div>*/}
                     </div>
                 </div>
 
 
                 <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div className={classes.depth3Frame3}>
-                            <div className={classes.depth4Frame4}>
-                                <div style={{direction: "rtl"}} className={classes.firstName}>אימייל</div>
-                            </div>
-                            <div className={classes.cfont10}>
-                                {error.email ?
-                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red", left:"20px"}}>
-                                        {"שדה זה חייב להכיל את האימייל שלך"}
-                                    </h1>
-                                    : null
-                                }
-                            </div>
-                            <div className={classes.depth4Frame1}>
-                                <div className={classes.depth5Frame3}>
-                                    {/*<div className={classes.depth6Frame2}>*/}
-                                    <div style={{textAlign: "right"}} className={classes.depth7Frame2}>
-                                        <input type={"email"}
-                                               name={"email"} onFocus={handleInputFocus}
-                                               value={user.email} onChange={editInput}/>
-                                        {/*<div className={classes.ellis}>Ellis</div>*/}
-                                    </div>
-                                    {/*</div>*/}
-                                </div>
-                            </div>
+                    <div className={classes.depth3Frame3}>
+                        <div style={{direction: "rtl"}} className={classes.firstName}>אימייל</div>
+                    </div>
+                </div>
+
+
+                <div>
+                    {error.email ?
+                        <h1 style={{textAlign: "right", direction: "rtl", color: "red", left: "20px"}}>
+                            {"שדה זה חייב להכיל אימייל"}
+                        </h1>
+                        : null
+                    }
+                </div>
+
+                <div className={classes.depth4Frame1}>
+                    <div className={classes.depth5Frame3}>
+                        {/*<div className={classes.depth6Frame2}>*/}
+                        <div style={{textAlign: "right"}} className={classes.depth7Frame2}>
+                            <input type={"email"}
+                                   name={"email"} onFocus={handleInputFocus}
+                                   value={user.email} onChange={editInput}/>
+                            {/*<div className={classes.ellis}>Ellis</div>*/}
                         </div>
+                        {/*</div>*/}
                     </div>
                 </div>
 
@@ -256,7 +254,6 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
-
 
 
                 {/*<div className={classes.depth1Frame1}>*/}

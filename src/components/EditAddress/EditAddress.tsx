@@ -93,7 +93,7 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                 name: oldCookie.name,
                 status: oldCookie.status,
             });
-            navigate('done')
+            navigate('done');
         } else {
             return;
         }
@@ -147,115 +147,104 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
+
+
                 <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div className={classes.depth3Frame3}>
-                            <div className={classes.depth4Frame4}>
-                                <div style={{direction: "rtl"}} className={classes.firstName}>עיר</div>
-                            </div>
-                            <div style={{direction: "rtl"}} className={classes.cfont4}>
-                                {error.city ?
-                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
-                                        {"שדה זה חייב להכיל שם עיר בישראל"}
-                                    </h1>
-                                    : null
-                                }
-                            </div>
-                            <div className={classes.depth4Frame1}>
-                                <div className={classes.depth5Frame3}>
-                                    <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                                        <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                               name={"city"} onFocus={handleInputFocus}
-                                               value={user.city} onChange={editInput}/>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className={classes.depth3Frame3}>
+                        <div style={{direction: "rtl"}} className={classes.firstName}>עיר</div>
+                    </div>
+                </div>
+                <div style={{direction: "rtl"}}>
+                    {error.city ?
+                        <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                            {"שדה זה חייב להכיל שם עיר בישראל"}
+                        </h1>
+                        : null
+                    }
+                </div>
+
+                <div className={classes.depth4Frame1}>
+                    <div className={classes.depth5Frame3}>
+                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
+                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
+                                   name={"city"} onFocus={handleInputFocus}
+                                   value={user.city} onChange={editInput}/>
                         </div>
                     </div>
                 </div>
 
 
                 <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div className={classes.depth3Frame3}>
-                            <div className={classes.depth4Frame4}>
-                                <div style={{direction: "rtl"}} className={classes.firstName}>רחוב</div>
-                            </div>
-                            <div style={{direction: "rtl"}} className={classes.cfont5}>
-                                {error.street ?
-                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
-                                        {"שדה זה חייב להכיל שם רחוב בעיר שלך"}
-                                    </h1>
-                                    : null
-                                }
-                            </div>
-                            <div className={classes.depth4Frame1}>
-                                <div className={classes.depth5Frame3}>
-                                    <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                                        <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                               name={"street"} onFocus={handleInputFocus}
-                                               value={user.street} onChange={editInput}/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className={classes.depth3Frame3}>
+                        <div style={{direction: "rtl"}} className={classes.firstName}>רחוב</div>
                     </div>
                 </div>
-
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div className={classes.depth3Frame3}>
-                            <div className={classes.depth4Frame4}>
-                                <div style={{direction: "rtl"}} className={classes.firstName}>מס' דירה</div>
-                            </div>
-                            <div style={{direction: "rtl"}} className={classes.cfont7}>
-                                {error.street2 ?
-                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
-                                        {"שדה זה חייב להכיל את מספר הדירה"}
-                                    </h1>
-                                    : null
-                                }
-                            </div>
-                            <div className={classes.depth4Frame1}>
-                                <div className={classes.depth5Frame3}>
-                                    <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                                        <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                               name={"street2"} onFocus={handleInputFocus}
-                                               value={user.street2} onChange={editInput}/>
-                                    </div>
-                                </div>
-                            </div>
+                <div style={{direction: "rtl"}}>
+                    {error.street ?
+                        <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                            {"שדה זה חייב להכיל שם רחוב בעיר שלך"}
+                        </h1>
+                        : null
+                    }
+                </div>
+                <div className={classes.depth4Frame1}>
+                    <div className={classes.depth5Frame3}>
+                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
+                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
+                                   name={"street"} onFocus={handleInputFocus}
+                                   value={user.street} onChange={editInput}/>
                         </div>
                     </div>
                 </div>
 
 
                 <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div className={classes.depth3Frame3}>
-                            <div className={classes.depth4Frame4}>
-                                <div style={{direction: "rtl"}} className={classes.firstName}>מיקוד</div>
-                            </div>
-                            <div style={{direction: "rtl"}} className={classes.cfont6}>
-                                {error.zipcode ?
-                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
-                                        {"שדה זה חייב להכיל את המיקוד התקין"}
-                                    </h1>
-                                    : null
-                                }
-                            </div>
-                            <div className={classes.depth4Frame1}>
-                                <div className={classes.depth5Frame3}>
-                                    <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                                        <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                               name={"zipcode"} onFocus={handleInputFocus}
-                                               value={user.zipcode} onChange={editInput}/>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className={classes.depth3Frame3}>
+                        <div style={{direction: "rtl"}} className={classes.firstName}>מס' דירה</div>
+                    </div>
+                </div>
+                <div style={{direction: "rtl"}}>
+                    {error.street2 ?
+                        <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                            {"שדה זה חייב להכיל את מספר הדירה"}
+                        </h1>
+                        : null
+                    }
+                </div>
+                <div className={classes.depth4Frame1}>
+                    <div className={classes.depth5Frame3}>
+                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
+                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
+                                   name={"street2"} onFocus={handleInputFocus}
+                                   value={user.street2} onChange={editInput}/>
                         </div>
                     </div>
                 </div>
+
+
+                <div className={classes.depth1Frame1}>
+                    <div className={classes.depth3Frame3}>
+                        <div style={{direction: "rtl"}} className={classes.firstName}>מיקוד</div>
+                    </div>
+                </div>
+                <div style={{direction: "rtl"}}>
+                    {error.zipcode ?
+                        <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                            {"שדה זה חייב להכיל את המיקוד התקין"}
+                        </h1>
+                        : null
+                    }
+                </div>
+                <div className={classes.depth4Frame1}>
+                    <div className={classes.depth5Frame3}>
+                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
+                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
+                                   name={"zipcode"} onFocus={handleInputFocus}
+                                   value={user.zipcode} onChange={editInput}/>
+                        </div>
+                    </div>
+                </div>
+
 
                 {/*<div className={classes.depth1Frame2}>*/}
                 {/*    <div className={classes.depth2Frame3}>*/}
@@ -342,5 +331,6 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                 <div className={classes.depth1Frame8}></div>
             </div>
         </div>
-    );
+    )
+        ;
 });
