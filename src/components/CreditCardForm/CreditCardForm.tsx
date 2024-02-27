@@ -31,21 +31,58 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({onSubmit}:
         focus: "",
     });
 
+    const [isFailed, setIsFailed] = useState(
+        {
+            number: false,
+            expiry: false,
+            cvc: false,
+            name: false
+        }
+    );
+
     const validateInput = (number: any, name: any, expiry: any, cvc: any) => {
-        if (!number || !name || !expiry || !cvc)
-            return false;
+
         const clearExpiryValue = clearNumber(expiry);
         const clearNumberValue = clearNumber(number);
         const clearCVCValue = clearNumber(cvc);
-        const clearNameValue = clearNumber(name);
+        let isTrue = true;
         if (!Payment.fns.validateCardExpiry(clearExpiryValue.slice(0, 2), clearExpiryValue.slice(2, 5))) {
-            return false;
-        // } else if (!Payment.fns.validateCardNumber(clearNumberValue)) {
-        //     return false;
-        } else if (!Payment.fns.validateCardCVC(clearCVCValue)) {
-            return false;
+            setIsFailed(prevState => {
+                return {
+                    ...prevState,
+                    expiry: true
+                };
+            });
+            isTrue = false;
         }
-        return clearNameValue.length <= 20;
+        if (clearNumberValue.toString().length !== 16) {
+            setIsFailed(prevState => {
+                return {
+                    ...prevState,
+                    number: true
+                };
+            });
+            isTrue = false;
+        }
+        if (!Payment.fns.validateCardCVC(clearCVCValue)) {
+            setIsFailed(prevState => {
+                return {
+                    ...prevState,
+                    cvc: true
+                };
+            });
+            isTrue = false;
+        }
+        if (name.length > 20 || !name) {
+            setIsFailed(prevState => {
+                return {
+                    ...prevState,
+                    name: true
+                };
+            });
+            isTrue = false;
+        }
+        return isTrue;
 
 
     };
@@ -68,6 +105,12 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({onSubmit}:
 
 
     const handleInputFocus = (e: any) => {
+        setIsFailed({
+            number: false,
+            expiry: false,
+            cvc: false,
+            name: false
+        });
         setError(false);
         setDetails((prevDetails: any) => {
             return {
@@ -195,31 +238,68 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({onSubmit}:
                     </div>
                 </div>
 
-                <div className={classes.ardetails}>
-                    <div className={classes.detailsss}>
-                        <div style={{direction: "rtl"}} className={classes.cfont}>
-                            {error ?
-                                <h1 style={{textAlign: "center", direction: "rtl", color: "red"}}>אחד או יותר מהפרטים
-                                    שגוי!</h1>
-                                : null}
-                            {/*חכה שנייה... עם מה נשלם?*/}
+                {error ?
+                    <div className={classes.ardetails}>
+                        <div className={classes.detailsss}>
+                            {/*<div style={{direction: "rtl"}} className={classes.cfont}>*/}
+                            {/*    {error ?*/}
+                            {/*        <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>אחד או יותר מהפרטים*/}
+                            {/*            שגוי!</h1>*/}
+                            {/*        : null*/}
+                            {/*    }*/}
+                            {/*</div>*/}
+                            <div style={{direction: "rtl"}} className={classes.cfont}>
+                                {isFailed.number ?
+                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                                        {"מספר כרטיס חייב לכלול 16 ספרות בסך הכך"}
+                                    </h1>
+                                    : null
+                                }
+                            </div>
+                            <div style={{direction: "rtl"}} className={classes.cfont}>
+                                {isFailed.expiry ?
+                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                                        {"תאריך תפוגה חייב להיות תאריך עתידי קיים"}
+                                    </h1>
+                                    : null
+                                }
+                            </div>
+                            <div style={{direction: "rtl"}} className={classes.cfont}>
+                                {isFailed.cvc ?
+                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                                        {"מספר הCVC האחורי חייב להכיל 3 ספרות בדיוק"}
+                                    </h1>
+                                    : null
+                                }
+                            </div>
+                            <div style={{direction: "rtl"}} className={classes.cfont}>
+                                {isFailed.name ?
+                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
+                                        {"שם בעל הכרטיס חייב להכיל שם קטן מ-20 תווים"}
+                                    </h1>
+                                    : null
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
+                    : null
+                }
 
 
-                <div className={classes.cardFrame} key="Payment">
-                    <div className={classes.AppPayment}>
-                        <Card
-                            number={details.number}
-                            name={details.name}
-                            expiry={details.expiry}
-                            cvc={details.cvc}
-                            focused={details.focus}
-                        />
-                        <hr style={{margin: "60px 0 30px"}}/>
+                {!error ?
+                    <div className={classes.cardFrame} key="Payment">
+                        <div className={classes.AppPayment}>
+                            <Card
+                                number={details.number}
+                                name={details.name}
+                                expiry={details.expiry}
+                                cvc={details.cvc}
+                                focused={details.focus}
+                            />
+                            <hr style={{margin: "60px 0 30px"}}/>
+                        </div>
                     </div>
-                </div>
+                    : null}
 
 
                 <div className={classes.depth1Frame1}>

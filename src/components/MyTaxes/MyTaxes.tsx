@@ -15,6 +15,17 @@ import {ShevahIcon} from "./ShevahIcon";
 import {ArnonaIcon} from "./ArnonaIcon";
 import {RehoshIcon} from "./RehoshIcon";
 import {ThankYouPage} from "../ThankYouPage/ThankYouPage";
+import {
+    Dialog, DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle
+} from "../ui/dialog";
+// @ts-ignore
+import {DialogTrigger} from "@radix-ui/react-dialog";
+import {Button} from "../ui/button";
 
 interface Props {
     className?: string;
@@ -159,7 +170,7 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
                                     <div className={classes.depth4Frame12}>
                                         <div className={classes.depth5Frame5}>
                                             <div style={{direction: "rtl"}} className={classes.dueApril182022}>
-                                                {`${item.amount}₪ עד מחר`}
+                                                {`₪${item.amount} עד מחר`}
                                             </div>
                                         </div>
                                     </div>
@@ -363,15 +374,40 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                     <br/><br/><br/><br/><br/><br/>
-                    <div className={classes.depth1Frame5}>
-                        <button className={classes.depth2Frame5} onClick={onSubmit}>
-                            <div className={classes.depth3Frame8}>
-                                <div className={classes.depth4Frame15}>
-                                    <div className={classes.paySelected}>שלם</div>
-                                </div>
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            {/*<Button variant="outline">Share</Button>*/}
+                            <div className={classes.depth1Frame5}>
+                                <button className={classes.depth2Frame5}>
+                                    <div className={classes.depth3Frame8}>
+                                        <div className={classes.depth4Frame15}>
+                                            <div className={classes.paySelected}>שלם</div>
+                                        </div>
+                                    </div>
+                                </button>
                             </div>
-                        </button>
-                    </div>
+                        </DialogTrigger>
+                        {/*<DialogContent className="sm:max-w-md">*/}
+                        <DialogContent className="w-9/12">
+                            <DialogHeader>
+                                <DialogTitle style={{direction: "rtl"}}>האם אתה בטוח?</DialogTitle>
+                                <DialogDescription style={{textAlign: "center", direction: "rtl"}} className={"justify-end"}>
+                                    {`סך התשלום עומד על ${total} ₪`}
+                                </DialogDescription>
+                                <DialogDescription style={{textAlign: "center", direction: "rtl"}} className={"justify-end"}>
+                                    לא ניתן יהיה לחזור אחורה לאחר ביצוע התשלום!
+                                </DialogDescription>
+                            </DialogHeader>
+                            <DialogFooter className="justify-center sm:justify-center">
+                                <DialogClose asChild>
+                                    <Button style={{backgroundColor: "#1a80e5"}} variant={"blue"} onClick={onSubmit}
+                                            type="button">
+                                        שלח תשלום
+                                    </Button>
+                                </DialogClose>
+                            </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
                     <div className={classes.depth1Frame6}></div>
                 </div>
             </div>

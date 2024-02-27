@@ -175,13 +175,15 @@ input[type="tel"]::-webkit-input-placeholder {
 .ardetails {
 
     width: 390px;
-    height: 59.5px;
+    /*height: 59.5px;*/
     flex-direction: column;
     padding: 20px 16px 12px;
 
 }
 
 .detailsss {
+    margin: 5px;
+    gap: 5px;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -189,7 +191,9 @@ input[type="tel"]::-webkit-input-placeholder {
     height: min-content;
     align-self: stretch;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
+    justify-content: center;
+    border: solid 3px red;
 }
 
 .depth3Frame3 {
