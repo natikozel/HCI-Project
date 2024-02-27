@@ -18,7 +18,6 @@ export const ProfilePage: FC<Props> = memo(function GalileoDesign(props = {}) {
     const navigate = useNavigate();
     const {myId}: any = useParams();
     const myUser = cookies.get(myId);
-    console.log(myUser);
 
     return (
         <div className={`${resets.storybrainResets} ${classes.root}`}>
@@ -59,7 +58,7 @@ export const ProfilePage: FC<Props> = memo(function GalileoDesign(props = {}) {
                                 </div>
                             </div>
                         </div>
-                        <div className={classes.depth3Frame12}>
+                        <button className={classes.depth3Frame12} onClick={() => navigate('editpersonal')} >
                             <div className={classes.depth4Frame3}>
                                 <div className={classes.depth5Frame4}>
                                     <div className={classes.depth6Frame4}>
@@ -69,7 +68,7 @@ export const ProfilePage: FC<Props> = memo(function GalileoDesign(props = {}) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <button className={classes.depth1Frame2} onClick={() => navigate('myList')}>
@@ -95,7 +94,7 @@ export const ProfilePage: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </button>
-                <button className={classes.depth1Frame4} onClick={() => navigate('myList')}>
+                <button className={classes.depth1Frame4} onClick={() => navigate('editaddress')}>
                     <div className={classes.depth3Frame13}>
                         <div className={classes.depth4Frame5}>
                             <div className={classes.depth5Frame5}>

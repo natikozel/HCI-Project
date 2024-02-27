@@ -394,7 +394,7 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
                                 <DialogDescription style={{textAlign: "center", direction: "rtl"}} className={"justify-end"}>
                                     {`סך התשלום עומד על ${total} ₪`}
                                 </DialogDescription>
-                                <DialogDescription style={{textAlign: "center", direction: "rtl"}} className={"justify-end"}>
+                                <DialogDescription style={{direction: "rtl", textAlign: "center"}} className={"flex justify-end"}>
                                     לא ניתן יהיה לחזור אחורה לאחר ביצוע התשלום!
                                 </DialogDescription>
                             </DialogHeader>

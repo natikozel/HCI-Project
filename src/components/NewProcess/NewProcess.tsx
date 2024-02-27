@@ -34,7 +34,7 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
     const [dateTitle, setDateTitle] = useState("תאריך יציאה");
     const [date, setDate]: any = useState();
     const [name, setName]: any = useState();
-
+    const [email, setEmail]: any = useState();
     const [isFailed, setIsFailed] = useState([
         {
             id: false,
@@ -51,6 +51,10 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
         {
             name: false,
             message: ''
+        },
+        {
+            email: false,
+            message: ''
         }
     ]);
     const [used, setUsed] = useState(false);
@@ -66,12 +70,16 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
         setId(e.target.value);
     };
 
+    const onEmailChange = (e: any) => {
+        setEmail(e.target.value);
+    };
+
 
     const onNameChange = (e: any) => {
         if (e.target.value.toString().length > 20)
             return;
         setName(e.target.value);
-    }
+    };
 
     const onSubmit = () => {
 
@@ -126,7 +134,20 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
             });
         }
 
-        if (!id || id.length !== 9 || !date || !status)
+        if (!email || !email.toString().includes('@')) {
+            setIsFailed(prevState => {
+                const newArr = [...prevState];
+                let newEmail = newArr.find((i: any) => i.email === false);
+                newEmail = {
+                    email: true,
+                    message: "אנא הקלד מייל תקין"
+                };
+                newArr[4] = newEmail;
+                return newArr;
+            });
+        }
+
+        if (!id || id.length !== 9 || !date || !status || !email || !email.toString().includes('@'))
             return;
 
         if (!!cookies.get(id)) {
@@ -137,6 +158,7 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
             id,
             status,
             name,
+            email,
             date: date!.value!,
             payment: false,
             card: null,
@@ -199,15 +221,15 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
-                    <div className={classes.t4}>
-                            {used ?
-                                <div className={classes.t1}>
-                                     <div style={{direction: "rtl", color: "red", textWrap: "wrap"}} className={classes.cfont}>
-                                         למספר זהות זה כבר משוייך תהליך, אנא בדוק פרטיך שנית.
-                                     </div>
-                                </div>
-                                : null}
+                {/*<div className={classes.t4}>*/}
+                {used ?
+                    <div className={classes.t1}>
+                        <div style={{direction: "rtl", color: "red", textWrap: "wrap"}} className={classes.cfont}>
+                            למספר זהות זה כבר משוייך תהליך, אנא בדוק פרטיך שנית.
+                        </div>
                     </div>
+                    : null}
+                {/*</div>*/}
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
                         <div className={classes.accountHolderID}>מספר זהות</div>
@@ -252,18 +274,13 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                 </div>
 
 
-
-
-
-
-
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
                         <div className={classes.accountHolderID}>שם מלא</div>
                     </div>
                 </div>
                 {isFailed.find((i: any) => i.name === true) ?
-                    <div style={{direction: "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
+                    <div style={{direction: "rtl"}}>
                         <h1 style={{direction: "rtl", color: "red", textAlign: "right"}}
                             className={classes.cfont}>
                             {isFailed.find((i: any) => i.name === true)?.message}
@@ -278,13 +295,13 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                     <input onChange={onNameChange} value={name}
                                            type="text"
                                            placeholder={"הזן את שמך המלא כאן"}
-                                           className={classes.enterYourAccountHolderID}
+                                           className={classes.enterYourAccountHolderNAME}
                                            onFocus={() => {
                                                setIsFailed(prevState => {
                                                    const newArr = [...prevState];
                                                    let newName = newArr.find((i: any) => i.name === true);
                                                    newName = {
-                                                       id: false,
+                                                       name: false,
                                                        message: ""
                                                    };
                                                    newArr[3] = newName;
@@ -300,20 +317,48 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                     </div>
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <div className={classes.depth1Frame1}>
+                    <div className={classes.depth2Frame2}>
+                        <div className={classes.accountHolderID}>אימייל</div>
+                    </div>
+                </div>
+                {isFailed.find((i: any) => i.email === true) ?
+                    <div style={{direction: "rtl"}}>
+                        <h1 style={{direction: "rtl", color: "red", textAlign: "right"}}
+                            className={classes.cfont}>
+                            {isFailed.find((i: any) => i.email === true)?.message}
+                        </h1>
+                    </div>
+                    : null}
+                <div className={classes.depth1Frame2}>
+                    <div className={classes.depth2Frame3}>
+                        <div className={classes.depth3Frame3}>
+                            <div className={classes.depth4Frame4}>
+                                <div className={classes.depth5Frame3}>
+                                    <input onChange={onEmailChange} value={email}
+                                           type="email"
+                                           placeholder={"הזן את האימייל שלך כאן"}
+                                           className={classes.enterYourAccountHolderEMAIL}
+                                           onFocus={() => {
+                                               setIsFailed(prevState => {
+                                                   const newArr = [...prevState];
+                                                   let newName = newArr.find((i: any) => i.email === true);
+                                                   newName = {
+                                                       email: false,
+                                                       message: ""
+                                                   };
+                                                   newArr[4] = newName;
+                                                   return newArr;
+                                               });
+                                               setUsed(false);
+                                           }}
+                                    >
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
                 <div className={classes.depth1Frame3}>
@@ -398,7 +443,6 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
-                <br/>
 
                 {/*<div className={classes.depth1Frame8}>*/}
                 {/*    <button className={classes.depth2Frame8} onClick={onSubmit}>*/}
@@ -409,6 +453,7 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                 {/*        </div>*/}
                 {/*    </button>*/}
                 {/*</div>*/}
+                <br/>
                 <Dialog>
                     <DialogTrigger asChild>
                         {/*<Button variant="outline">Share</Button>*/}

@@ -7,6 +7,9 @@ import {MyProcessList} from "./components/MyProcessList/MyProcessList";
 import {MyTaxes} from "./components/MyTaxes/MyTaxes";
 import {WelcomePage} from "./components/WelcomePage/WelcomePage";
 import {ProfilePage} from "./components/ProfilePage/ProfilePage";
+import {EditAddress} from "./components/EditAddress/EditAddress";
+import {EditPersonal} from "./components/EditPersonal/EditPersonal";
+import {FinishedAddressEdit} from "./components/FinishedAddressEdit/FinishedAddressEdit";
 
 interface Props {
     className?: string;
@@ -28,6 +31,18 @@ const router = createBrowserRouter([
     {
         path: '/myProcess/:myId',
         element: <ProfilePage/>
+    },
+    {
+        path: '/myProcess/:myId/editaddress',
+        element: <EditAddress/>
+    },
+    {
+        path: '/myProcess/:myId/editaddress/done',
+        element: <FinishedAddressEdit/>
+    },
+    {
+        path: '/myProcess/:myId/editpersonal',
+        element: <EditPersonal/>
     },
     {
         path: '/myProcess/:myId/myList',

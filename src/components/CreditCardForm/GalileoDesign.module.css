@@ -34,6 +34,10 @@ input[type="tel"]::-webkit-input-placeholder {
     text-align: center;
 }
 
+input[type="number"]::-webkit-input-placeholder {
+    text-align: center;
+}
+
 .depthFrame {
     width: 390px;
     height: 844px;

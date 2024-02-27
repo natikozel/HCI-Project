@@ -216,7 +216,7 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({onSubmit}:
                 <div className={classes.depth1Frame}>
                     <div className={classes.depth2Frame}>
                         <div className={classes.depth3Frame}>
-                            <button className={classes.depth4Frame} onClick={() => navigate('/')}>
+                            <button className={classes.depth4Frame} onClick={() => navigate(-1)}>
                                 <div className={classes.depth5Frame}>
                                     <div className={classes.vector}>
                                         <VectorIcon className={classes.icon}/>
