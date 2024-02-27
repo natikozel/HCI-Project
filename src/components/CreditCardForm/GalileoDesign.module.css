@@ -31,6 +31,10 @@
     background-color: #fff;
 }
 
+input[type="tel"]::-webkit-input-placeholder {
+    text-align: center;
+}
+
 .depthFrame {
     width: 390px;
     height: 844px;
@@ -178,10 +182,10 @@
 }
 
 .detailsss {
-
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-end;
+    align-content: center;
     height: min-content;
     align-self: stretch;
     flex-direction: column;
@@ -365,6 +369,7 @@ input:focus {
 }
 
 .mMYY {
+    text-align: center;
     width: 55px;
     color: #4f4f96;
     font-size: 16px;
@@ -415,6 +420,8 @@ input:focus {
 .depth5Frame5 {
     width: 171px;
     height: 56px;
+    /*width: inherit;*/
+    /*height: inherit;*/
     place-content: space-around;
     align-items: flex-start;
     padding: 15px;
@@ -426,7 +433,7 @@ input:focus {
 }
 
 .depth6Frame4 {
-    /*width: 33.2969px;*/
+    /*width: 20px;*/
     height: 24px;
     flex-direction: column;
     overflow: hidden;
@@ -440,13 +447,15 @@ input:focus {
 }
 
 .cVV {
+    text-align: center;
     color: #4f4f96;
     font-size: 16px;
     line-height: 24px;
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     'Liberation Sans', sans-serif;
-    width: min-content;
-    height: min-content;
+    /*width: min-content;*/
+    /*height: min-content;*/
+    /*width: 100px;*/
     white-space: nowrap;
     flex-direction: column;
 }

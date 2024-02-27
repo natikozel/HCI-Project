@@ -24,7 +24,7 @@ export const FinishedAll: FC<Props> = memo(function GalileoDesign(props = {}) {
                             <div className={classes.depth4Frame}>
                                 <div className={classes.depth5Frame}>
                                     <div style={{direction: "rtl"}} className={classes.allTasksFinished}>
-                                        {`כל התשלומים הוסדרו!`}
+                                        {`כל התשלומים שלך הוסדרו`}
                                     </div>
                                 </div>
                             </div>
@@ -50,16 +50,16 @@ export const FinishedAll: FC<Props> = memo(function GalileoDesign(props = {}) {
                 <div className={classes.depth1Frame2}>
                     <div className={classes.depth2Frame3}>
                         <div style={{direction: "rtl"}} className={classes.wellDoneYouVeCompletedAllYourT}>
-                            {`תודה רבה, נתראה בחודש הבא.`}
+                            {`תודה רבה ונתראה בחודש הבא`}
                         </div>
                     </div>
                 </div>
                 <br/>
                 <div className={classes.depth1Frame3}>
-                    <button className={classes.depth2Frame4} onClick={() => navigate('/myProcess')}>
+                    <button className={classes.depth2Frame4} onClick={() => navigate('/')}>
                         <div className={classes.depth3Frame4}>
                             <div className={classes.depth4Frame4}>
-                                <div style={{direction: "rtl"}} className={classes.goBack}>חזור לפרופיל</div>
+                                <div style={{direction: "rtl"}} className={classes.goBack}>חזור למסך הבית</div>
                             </div>
                         </div>
                     </button>

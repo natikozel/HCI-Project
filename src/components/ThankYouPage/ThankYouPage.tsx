@@ -44,31 +44,31 @@ export const ThankYouPage: FC<Props> = memo(function GalileoDesign({price}: any)
                         </div>
                     </div>
                 </div>
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
+                {/*<div className={classes.depth1Frame1}>*/}
+                {/*    <div className={classes.depth2Frame2}>*/}
                         <div className={classes.depth3Frame3}>
                             <div className={classes.depth4Frame3}>
 
                             </div>
                         </div>
-                    </div>
-                </div>
+                    {/*</div>*/}
+                {/*</div>*/}
                 <div className={classes.depth1Frame2}>
                     <div className={classes.depth2Frame3}>
-                        <div className={classes.youVeSuccessfullyPaid1000}>{`שולם ${price}₪`}</div>
+                        <div style={{direction: "rtl"}} className={classes.youVeSuccessfullyPaid1000}>{`שולם ${price} ₪`}</div>
                     </div>
                 </div>
                 <div className={classes.depth1Frame3}>
                     <div className={classes.depth2Frame4}>
                         <div style={{direction: "rtl"}} className={classes.goodJobYourTransactionHasBeenC}>
-                            {"ביצענו את כל התשלומים שבחרת בשמך ובשבילך."}
+                            {"כל התשלומים שנבחרו נפרעו בהצלחה"}
                         </div>
                         <div style={{direction: "rtl"}} className={classes.goodJobYourTransactionHasBeenC}>
-                            {"כעת ניתן לצאת."}
+                            {"כעת ניתן לצאת"}
                         </div>
                     </div>
                 </div>
-                <div className={classes.depth1Frame4}></div>
+                <br/><br/><br/><br/><br/>
                 <div className={classes.depth1Frame5}>
                     <button className={classes.depth2Frame5} onClick={onFinish}>
                         <div className={classes.depth3Frame4}>
@@ -78,7 +78,6 @@ export const ThankYouPage: FC<Props> = memo(function GalileoDesign({price}: any)
                         </div>
                     </button>
                 </div>
-                <div className={classes.depth1Frame6}></div>
             </div>
         </div>
     );

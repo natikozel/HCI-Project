@@ -10,7 +10,7 @@
     height: 844px;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #121a21;
+    background-color: #f7fafc;
     overflow: hidden;
 }
 
@@ -20,7 +20,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 16px 16px 8px;
-    background-color: #121a21;
+    background-color: #f7fafc;
 }
 
 .depth2Frame {
@@ -57,7 +57,7 @@
 }
 
 .paymentComplete {
-    color: #fff;
+    /*color: #fff;*/
     font-size: 18px;
     line-height: 22.5px;
     font-weight: bold;
@@ -137,7 +137,7 @@
 
 .depth3Frame3 {
     width: 390px;
-    height: 218px;
+    height: 418px;
     flex-direction: column;
     align-items: flex-start;
     background-color: #121a21;
@@ -147,7 +147,7 @@
 .depth4Frame3 {
     position: relative;
     width: 390px;
-    height: 218px;
+    height: 418px;
     background-image: url('depth4Frame.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -170,7 +170,7 @@
 }
 
 .youVeSuccessfullyPaid1000 {
-    color: #fff;
+    /*color: #fff;*/
     font-size: 22px;
     line-height: 27.5px;
     font-weight: bold;
@@ -200,7 +200,7 @@
 }
 
 .goodJobYourTransactionHasBeenC {
-    color: #fff;
+    /*color: #fff;*/
     font-size: 16px;
     line-height: 24px;
     font-family: Be Vietnam Pro, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',

@@ -1,3 +1,28 @@
+
+@font-face {
+  font-family: myFont;
+  src: url('RubikDoodleShadow-Regular.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: mySecondFont;
+  src: url('Heebo-VariableFont_wght.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: myThirdFont;
+  src: url('SecularOne-Regular.ttf');
+  font-weight: bold;
+}
+
+.cfont {
+  font-family: myThirdFont, sans-serif;
+  font-size: 18px;
+  direction: rtl;
+}
+
 .root {
   width: min-content;
   height: min-content;
@@ -235,6 +260,8 @@ input[type="number"]:-ms-input-placeholder {
 input[type="number"]::-webkit-input-placeholder {
   text-align: right;
 }
+
+
 
 input::-moz-placeholder {
   text-align: right;

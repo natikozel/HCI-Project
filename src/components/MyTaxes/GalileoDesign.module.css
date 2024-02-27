@@ -1,3 +1,26 @@
+@font-face {
+    font-family: myFont;
+    src: url('RubikDoodleShadow-Regular.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: mySecondFont;
+    src: url('Heebo-VariableFont_wght.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: myThirdFont;
+    src: url('SecularOne-Regular.ttf');
+    font-weight: bold;
+}
+
+.cfont {
+    font-family: mySecondFont, sans-serif;
+    font-size: 24px;
+}
+
 .root {
     width: min-content;
     height: min-content;
@@ -643,7 +666,12 @@
 }
 
 .depth3Frame8 {
-    width: 102.625px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    /*width: 102.625px;*/
     height: 24px;
     flex-direction: column;
     background-color: #1a80e5;

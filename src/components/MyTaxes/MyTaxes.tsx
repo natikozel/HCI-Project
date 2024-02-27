@@ -357,8 +357,8 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
                     <br/><br/><br/>
                     <div className={classes.one}>
                         <div className={classes.two}>
-                            <div style={{direction: "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
-                                {`בסך הכל: ${total}₪`}
+                            <div style={{direction: "rtl"}} className={classes.cfont}>
+                                {`בסך הכל:         ${total} ₪`}
                             </div>
                         </div>
                     </div>
@@ -367,7 +367,7 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
                         <button className={classes.depth2Frame5} onClick={onSubmit}>
                             <div className={classes.depth3Frame8}>
                                 <div className={classes.depth4Frame15}>
-                                    <div className={classes.paySelected}>גמור עם זה</div>
+                                    <div className={classes.paySelected}>שלם</div>
                                 </div>
                             </div>
                         </button>

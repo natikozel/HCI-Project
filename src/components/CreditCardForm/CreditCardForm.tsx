@@ -9,6 +9,7 @@ import Card from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import {useNavigate, useParams} from "react-router-dom";
 import Cookies from "universal-cookie";
+import Payment from "payment";
 
 interface Props {
     className?: string,
@@ -16,11 +17,12 @@ interface Props {
 }
 
 /* @figmaId 31:78 */
-export const CreditCardForm: FC<Props> = memo(function GalileoDesign({ onSubmit } : any) {
+export const CreditCardForm: FC<Props> = memo(function GalileoDesign({onSubmit}: any) {
 
     const cookies = new Cookies();
     const {myId}: any = useParams();
     const navigate = useNavigate();
+    const [error, setError] = useState(false);
     const [details, setDetails]: [any, any] = useState({
         number: "",
         name: "",
@@ -29,21 +31,44 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({ onSubmit 
         focus: "",
     });
 
+    const validateInput = (number: any, name: any, expiry: any, cvc: any) => {
+        if (!number || !name || !expiry || !cvc)
+            return false;
+        const clearExpiryValue = clearNumber(expiry);
+        const clearNumberValue = clearNumber(number);
+        const clearCVCValue = clearNumber(cvc);
+        const clearNameValue = clearNumber(name);
+        if (!Payment.fns.validateCardExpiry(clearExpiryValue.slice(0, 2), clearExpiryValue.slice(2, 5))) {
+            return false;
+        // } else if (!Payment.fns.validateCardNumber(clearNumberValue)) {
+        //     return false;
+        } else if (!Payment.fns.validateCardCVC(clearCVCValue)) {
+            return false;
+        }
+        return clearNameValue.length <= 20;
+
+
+    };
 
     const handleSubmit = () => {
-        if (!details.number || !details.name || !details.expiry || !details.cvc)
-            return;
-        else {
+
+        if (validateInput(details.number, details.name, details.expiry, details.cvc)) {
+
             const myCookie = cookies.get(myId);
             myCookie.payment = true;
             myCookie.card = details;
             cookies.set(myId, myCookie);
             onSubmit(true);
+        } else {
+            setError(true);
+            return;
         }
+
     };
 
 
     const handleInputFocus = (e: any) => {
+        setError(false);
         setDetails((prevDetails: any) => {
             return {
                 ...prevDetails,
@@ -52,25 +77,92 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({ onSubmit 
         });
     };
 
+    function clearNumber(value = '') {
+        return value.replace(/\D+/g, '');
+    }
+
+    function formatCreditCardNumber(value: any) {
+        if (!value) {
+            return value;
+        }
+
+        const issuer = Payment.fns.cardType(value);
+        const clearValue = clearNumber(value);
+        let nextValue;
+
+        switch (issuer) {
+            case 'amex':
+                nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+                    4,
+                    10
+                )} ${clearValue.slice(10, 15)}`;
+                break;
+            case 'dinersclub':
+                nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+                    4,
+                    10
+                )} ${clearValue.slice(10, 14)}`;
+                break;
+            default:
+                nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+                    4,
+                    8
+                )} ${clearValue.slice(8, 12)} ${clearValue.slice(12, 19)}`;
+                break;
+        }
+
+        return nextValue.trim();
+    }
+
+    function formatExpirationDate(value: any) {
+        const clearValue = clearNumber(value);
+
+        if (clearValue.length >= 3) {
+            return `${clearValue.slice(0, 2)}/${clearValue.slice(2, 4)}`;
+        }
+
+        return clearValue;
+    }
+
+    function formatCVC(value: any, allValues: any = {}) {
+        const clearValue = clearNumber(value);
+        let maxLength = 3;
+
+        if (allValues.number) {
+            const issuer = Payment.fns.cardType(allValues.number);
+        }
+
+        return clearValue.slice(0, maxLength);
+    }
+
     const handleInputChange = (e: any) => {
-        switch (e.target.name) {
+        const target = e.target;
+        switch (target.name) {
             case "number":
-                if (e.target.value.toString().trim().length > 19)
+                if (target.value.toString().trim().length > 19)
                     return;
                 break;
             case "expiry":
-                if (e.target.value.toString().trim().length > 5)
+                if (target.value.toString().trim().length > 5)
                     return;
                 break;
             case "cvc":
-                if (e.target.value.toString().trim().length > 3)
+                if (target.value.toString().trim().length > 3)
                     return;
                 break;
         }
+        if (target.name === 'number') {
+            target.value = formatCreditCardNumber(target.value);
+        } else if (target.name === 'expiry') {
+            target.value = formatExpirationDate(target.value);
+        } else if (target.name === 'cvc') {
+            target.value = formatCVC(target.value);
+        }
+
         setDetails((prevDetails: any) => {
             return {
                 ...prevDetails,
-                [e.target.name]: `${e.target.value}`
+                [target.name]: `${target.value}`
             };
         });
     };
@@ -106,7 +198,11 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({ onSubmit 
                 <div className={classes.ardetails}>
                     <div className={classes.detailsss}>
                         <div style={{direction: "rtl"}} className={classes.cfont}>
-                            חכה שנייה... עם מה נשלם?
+                            {error ?
+                                <h1 style={{textAlign: "center", direction: "rtl", color: "red"}}>אחד או יותר מהפרטים
+                                    שגוי!</h1>
+                                : null}
+                            {/*חכה שנייה... עם מה נשלם?*/}
                         </div>
                     </div>
                 </div>
@@ -136,7 +232,7 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({ onSubmit 
                                 <div className={classes.depth5Frame3}>
                                     <div className={classes.depth6Frame2}>
                                         <div className={classes.depth7Frame}>
-                                            <input type={"number"}
+                                            <input type={"text"}
                                                    value={details.number}
                                                    name={"number"}
                                                    placeholder={"1234-5678-9876-5432"}
@@ -179,18 +275,18 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({ onSubmit 
                             </div>
                             <div className={classes.depth4Frame13}>
                                 <div className={classes.depth5Frame5}>
-                                    <div className={classes.depth6Frame4}>
-                                        <div className={classes.depth7Frame3}>
-                                            <input type={"text"}
-                                                   value={details.cvc}
-                                                   name={"cvc"}
-                                                   placeholder={"XXX"}
-                                                   className={classes.cVV}
-                                                   onChange={handleInputChange}
-                                                   onFocus={handleInputFocus}
-                                            ></input>
-                                        </div>
-                                    </div>
+                                    {/*<div className={classes.depth6Frame4}>*/}
+                                    {/*    <div className={classes.depth7Frame3}>*/}
+                                    <input type={"text"}
+                                           value={details.cvc}
+                                           name={"cvc"}
+                                           placeholder={"XXX"}
+                                           className={classes.cVV}
+                                           onChange={handleInputChange}
+                                           onFocus={handleInputFocus}
+                                    ></input>
+                                    {/*</div>*/}
+                                    {/*</div>*/}
                                 </div>
                             </div>
                         </div>

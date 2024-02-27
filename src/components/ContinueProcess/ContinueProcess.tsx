@@ -61,11 +61,12 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
                 </div>
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
-                        <div className={classes.toGetStartedWeLlNeedAFewDetail}>
-                            (: אנו זקוקים למעט פרטים על מנת שנוכל לאתר אותך
+                        <div className={classes.cfont}>
+                            {"אנו זקוקים למעט פרטים על מנת שנוכל לאתר אותך :)"}
                         </div>
                     </div>
                 </div>
+                <br/><br/>
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
                         <div className={classes.accountHolderID}>מספר זהות</div>
