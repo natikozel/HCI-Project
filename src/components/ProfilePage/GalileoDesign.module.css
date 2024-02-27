@@ -443,14 +443,14 @@
   align-items: center;
   padding: 0 20px;
   border-radius: 12px;
-  background-color: #40c2f7;
+  background-color: #1a80e5;
   overflow: hidden;
 }
 .depth3Frame5 {
   width: 60.6875px;
   height: 24px;
   flex-direction: column;
-  background-color: #40c2f7;
+  background-color: #1a80e5;
   overflow: hidden;
 }
 .depth4Frame8 {
@@ -460,7 +460,7 @@
   flex-direction: column;
 }
 .logOut {
-  color: #121717;
+  color: #ffffff;
   font-size: 16px;
   line-height: 24px;
   font-weight: bold;
