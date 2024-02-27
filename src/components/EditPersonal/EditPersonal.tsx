@@ -27,6 +27,7 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
     const [error, setError] = useState({
         name: false,
         id: false,
+        email: false,
         city: false,
         street: false,
         zipcode: false,
@@ -55,6 +56,16 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
             isTrue = false;
         }
 
+        if (!user.email || !user.email.includes('@')) {
+            setError(prevState => {
+                return {
+                    ...prevState,
+                    email: true
+                };
+            });
+            isTrue = false;
+        }
+
         return isTrue;
 
 
@@ -78,6 +89,7 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
         setError({
             name: false,
             id: false,
+            email: false,
             city: false,
             street: false,
             zipcode: false,
@@ -88,6 +100,7 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
         if (e.target.name === "id")
             if (e.target.value.toString().length > 9)
                 return;
+
         setUser((prevState: any) => {
             return {
                 ...prevState,
@@ -153,6 +166,38 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
+
+
+                <div className={classes.depth1Frame1}>
+                    <div className={classes.depth2Frame2}>
+                        <div className={classes.depth3Frame3}>
+                            <div className={classes.depth4Frame4}>
+                                <div style={{direction: "rtl"}} className={classes.firstName}>אימייל</div>
+                            </div>
+                            <div className={classes.cfont10}>
+                                {error.email ?
+                                    <h1 style={{textAlign: "right", direction: "rtl", color: "red", left:"20px"}}>
+                                        {"שדה זה חייב להכיל את האימייל שלך"}
+                                    </h1>
+                                    : null
+                                }
+                            </div>
+                            <div className={classes.depth4Frame1}>
+                                <div className={classes.depth5Frame3}>
+                                    {/*<div className={classes.depth6Frame2}>*/}
+                                    <div style={{textAlign: "right"}} className={classes.depth7Frame2}>
+                                        <input type={"email"}
+                                               name={"email"} onFocus={handleInputFocus}
+                                               value={user.email} onChange={editInput}/>
+                                        {/*<div className={classes.ellis}>Ellis</div>*/}
+                                    </div>
+                                    {/*</div>*/}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {/*<div className={classes.depth1Frame1}>*/}
                 {/*    <div className={classes.depth2Frame2}>*/}
                 {/*        <div className={classes.depth3Frame3}>*/}

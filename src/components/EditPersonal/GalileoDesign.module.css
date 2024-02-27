@@ -109,6 +109,26 @@
     align-self: stretch;
     flex-direction: column;
 }
+
+.cfont10 {
+    /*border: 1px solid red;*/
+    position: absolute;
+    /*float: right;*/
+    /*width: 300px;*/
+    /*right: 300px;*/
+    /*height: 0px;*/
+    height: auto;
+    width: auto;
+    left: 87px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-items: flex-end;
+    font-family: myThirdFont mySecondFont sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
 .cfont {
     /*border: 1px solid red;*/
     position: absolute;
@@ -389,6 +409,13 @@
     align-self: stretch;
     flex-direction: column;
 }
+.depth7Frame2 {
+    width: 100%;
+    /*width: min-content;*/
+    height: min-content;
+    align-self: stretch;
+    flex-direction: column;
+}
 
 .ellis {
     color: #121717;
@@ -468,7 +495,7 @@
 }
 
 .depth7Frame2 {
-    width: min-content;
+    /*width: min-content;*/
     height: min-content;
     align-self: stretch;
     flex-direction: column;
