@@ -56,7 +56,7 @@ export const FinishedAll: FC<Props> = memo(function GalileoDesign(props = {}) {
                 </div>
                 <br/>
                 <div className={classes.depth1Frame3}>
-                    <button className={classes.depth2Frame4} onClick={() => navigate('/')}>
+                    <button className={classes.depth2Frame4} onClick={() => navigate(-1)}>
                         <div className={classes.depth3Frame4}>
                             <div className={classes.depth4Frame4}>
                                 <div style={{direction: "rtl"}} className={classes.goBack}>חזור למסך הבית</div>

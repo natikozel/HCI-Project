@@ -17,6 +17,8 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
     const navigate = useNavigate();
     const [id, setId]: any = useState();
     const [alertMessage, setAlertMessage] = useState(false);
+    const [chars, setChars] = useState(false);
+
 
     const onIdChange = (e: any) => {
         if (e.target.value.toString().length > 9)
@@ -25,10 +27,14 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
     };
 
     const onSubmit = () => {
-        if (cookies.get(id)) {
-            navigate(`/myProcess/${id}`)
+        if (id?.toString().length !== 9) {
+            setChars(true);
+            return;
         }
-        else
+
+        if (cookies.get(id)) {
+            navigate(`/myProcess/${id}`);
+        } else
             setAlertMessage(true);
     };
 
@@ -82,38 +88,53 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
                                     <input required minLength={9} maxLength={9} onChange={onIdChange} value={id}
                                            type="number" placeholder={"הזן את מספר הזהות שלך כאן"}
                                            className={classes.enterYourAccountHolderID}
-                                    onFocus={() => setAlertMessage(false)}>
-                                    </input>
-                                    {/*</div>*/}
-                                    {/*</div>*/}
+                                           onFocus={() => {
+                                               setAlertMessage(false);
+                                               setChars(false);
+                                           }}>
+                                               </input>
+                                           {/*</div>*/}
+                                           {/*</div>*/}
+                                               </div>
+                                               </div>
+                                               </div>
+                                               </div>
+                                               </div>
+                                               <div className={classes.depth1Frame1}>
+                                        <div className={classes.depth2Frame2}>
+                                            <div style={{direction: "rtl"}}
+                                                 className={classes.toGetStartedWeLlNeedAFewDetail}>
+                                                {alertMessage ?
+                                                    <h1 style={{color: "red"}} className={classes.cfont}>
+                                                        {
+                                                            `מספר הזהות שהוכנס אינו קיים במערכת`
+                                                        }
+                                                    </h1>
+                                                    : null}
+                                                {chars ?
+                                                    <h1 style={{color: "red"}} className={classes.cfont}>
+                                                        {
+                                                            `מספר הזהות חייב להכיל 9 תווים בדיוק`
+                                                        }
+                                                    </h1>
+                                                    : null
+                                                }
+                                            </div>
+                                        </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div style={{direction : "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
-                            {alertMessage ?
-                                "לא הצלחנו למצוא עליך כלום." + "\n" +
-                                "בדוק את מספר הזהות."
-                                : null }
-                        </div>
-                    </div>
-                </div>
-                <div className={classes.depth1Frame7}></div>
+                                <div className={classes.depth1Frame7}></div>
 
-                <div className={classes.depth1Frame8}>
-                    <button onClick={onSubmit} className={classes.depth2Frame8}>
-                        <div className={classes.depth3Frame6}>
-                            <div className={classes.depth4Frame8}>
-                                <div className={classes.create}>המשך</div>
+                                <div className={classes.depth1Frame8}>
+                                    <button onClick={onSubmit} className={classes.depth2Frame8}>
+                                        <div className={classes.depth3Frame6}>
+                                            <div className={classes.depth4Frame8}>
+                                                <div className={classes.create}>המשך</div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div className={classes.depth1Frame9}></div>
                             </div>
                         </div>
-                    </button>
-                </div>
-                <div className={classes.depth1Frame9}></div>
-            </div>
-        </div>
-    );
-});
+                        );
+                        });

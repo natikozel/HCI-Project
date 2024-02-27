@@ -18,9 +18,6 @@ import {
 } from '../ui/dialog';
 // @ts-ignore
 import {DialogTrigger} from "@radix-ui/react-dialog";
-import {CopyIcon} from "@radix-ui/react-icons";
-import {Input} from "../ui/input";
-import {Label} from "../ui/label";
 import {Button} from "../ui/button";
 
 interface Props {
@@ -36,6 +33,8 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
     const [status, setStatus] = useState("דייר יוצא");
     const [dateTitle, setDateTitle] = useState("תאריך יציאה");
     const [date, setDate]: any = useState();
+    const [name, setName]: any = useState();
+
     const [isFailed, setIsFailed] = useState([
         {
             id: false,
@@ -47,6 +46,10 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
         },
         {
             date: false,
+            message: ''
+        },
+        {
+            name: false,
             message: ''
         }
     ]);
@@ -62,6 +65,13 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
             return;
         setId(e.target.value);
     };
+
+
+    const onNameChange = (e: any) => {
+        if (e.target.value.toString().length > 20)
+            return;
+        setName(e.target.value);
+    }
 
     const onSubmit = () => {
 
@@ -103,6 +113,18 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                 return newArr;
             });
         }
+        if (!name) {
+            setIsFailed(prevState => {
+                const newArr = [...prevState];
+                let newName = newArr.find((i: any) => i.name === false);
+                newName = {
+                    name: true,
+                    message: "אנא הקלד שם מלא"
+                };
+                newArr[3] = newName;
+                return newArr;
+            });
+        }
 
         if (!id || id.length !== 9 || !date || !status)
             return;
@@ -114,6 +136,7 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
         const myCookie = {
             id,
             status,
+            name,
             date: date!.value!,
             payment: false,
             card: null,
@@ -176,7 +199,6 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
-                {/*<div className={classes.t3}>*/}
                     <div className={classes.t4}>
                             {used ?
                                 <div className={classes.t1}>
@@ -186,7 +208,6 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                 </div>
                                 : null}
                     </div>
-                {/*</div>*/}
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
                         <div className={classes.accountHolderID}>מספר זהות</div>
@@ -229,6 +250,72 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+                <div className={classes.depth1Frame1}>
+                    <div className={classes.depth2Frame2}>
+                        <div className={classes.accountHolderID}>שם מלא</div>
+                    </div>
+                </div>
+                {isFailed.find((i: any) => i.name === true) ?
+                    <div style={{direction: "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
+                        <h1 style={{direction: "rtl", color: "red", textAlign: "right"}}
+                            className={classes.cfont}>
+                            {isFailed.find((i: any) => i.name === true)?.message}
+                        </h1>
+                    </div>
+                    : null}
+                <div className={classes.depth1Frame2}>
+                    <div className={classes.depth2Frame3}>
+                        <div className={classes.depth3Frame3}>
+                            <div className={classes.depth4Frame4}>
+                                <div className={classes.depth5Frame3}>
+                                    <input onChange={onNameChange} value={name}
+                                           type="text"
+                                           placeholder={"הזן את שמך המלא כאן"}
+                                           className={classes.enterYourAccountHolderID}
+                                           onFocus={() => {
+                                               setIsFailed(prevState => {
+                                                   const newArr = [...prevState];
+                                                   let newName = newArr.find((i: any) => i.name === true);
+                                                   newName = {
+                                                       id: false,
+                                                       message: ""
+                                                   };
+                                                   newArr[3] = newName;
+                                                   return newArr;
+                                               });
+                                               setUsed(false);
+                                           }}
+                                    >
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div className={classes.depth1Frame3}>
                     <div className={classes.depth2Frame4}>
                         <div className={classes.residentStatus}>סטטוס</div>
@@ -262,7 +349,6 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
-                <br/>
                 <div className={classes.depth1Frame5}>
                     <div className={classes.depth2Frame6}>
                         <div className={classes.leavingEnteringDate}>{dateTitle}</div>
@@ -312,7 +398,7 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
-                <br/><br/><br/><br/><br/><br/><br/>
+                <br/>
 
                 {/*<div className={classes.depth1Frame8}>*/}
                 {/*    <button className={classes.depth2Frame8} onClick={onSubmit}>*/}

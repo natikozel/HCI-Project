@@ -5,7 +5,7 @@ import resets from '../_resets.module.css';
 import classes from './GalileoDesign.module.css';
 import {VectorIcon} from './VectorIcon';
 import Card from "react-credit-cards";
-
+import {ProfileIcon} from './ProfileIcon';
 import "react-credit-cards/es/styles-compiled.css";
 import {useNavigate, useParams} from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -228,13 +228,20 @@ export const CreditCardForm: FC<Props> = memo(function GalileoDesign({onSubmit}:
                         <div className={classes.depth3Frame1}>
                             <div className={classes.depth4Frame2}>
                                 <div className={classes.depth5Frame2}>
-                                    <div className={classes.addACard}>הוסף כרטיס</div>
+                                    <div className={classes.addACard}>הוספת כרטיס</div>
                                 </div>
                             </div>
                         </div>
-                        <div className={classes.depth3Frame2}>
-                            <div className={classes.depth4Frame3}></div>
-                        </div>
+
+                        {/*<div className={classes.depth3Frame2}>*/}
+                        {/*    <button className={classes.depth4Frame} onClick={() => navigate('/')}>*/}
+                        {/*        <div className={classes.depth5Frame}>*/}
+                        {/*            <div className={classes.vector}>*/}
+                        {/*                <HomeIcon className={classes.icon}/>*/}
+                        {/*            </div>*/}
+                        {/*        </div>*/}
+                        {/*    </button>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
 

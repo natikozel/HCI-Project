@@ -42,7 +42,7 @@ export const MyProcessList: FC<Props> = memo(function GalileoDesign(props = {}) 
                 <div className={classes.depthFrame}>
                     <div className={classes.depth1Frame}>
                         <div className={classes.depth2Frame}>
-                            <button className={classes.depth3Frame} onClick={() => navigate("/continue")}>
+                            <button className={classes.depth3Frame} onClick={() => navigate(-1)}>
                                 <div className={classes.depth4Frame}>
                                     <div className={classes.depth5Frame}>
                                         <div className={classes.vector}>

@@ -6,6 +6,7 @@ import {ContinueProcess} from "./components/ContinueProcess/ContinueProcess";
 import {MyProcessList} from "./components/MyProcessList/MyProcessList";
 import {MyTaxes} from "./components/MyTaxes/MyTaxes";
 import {WelcomePage} from "./components/WelcomePage/WelcomePage";
+import {ProfilePage} from "./components/ProfilePage/ProfilePage";
 
 interface Props {
     className?: string;
@@ -26,10 +27,14 @@ const router = createBrowserRouter([
     },
     {
         path: '/myProcess/:myId',
+        element: <ProfilePage/>
+    },
+    {
+        path: '/myProcess/:myId/myList',
         element: <MyProcessList/>
     },
     {
-        path: '/myProcess/:myId/mytaxes',
+        path: '/myProcess/:myId/MyList/mytaxes',
         element: <MyTaxes/>
     },
 ]);

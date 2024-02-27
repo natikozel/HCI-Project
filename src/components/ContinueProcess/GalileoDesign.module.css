@@ -18,7 +18,7 @@
 }
 
 .cfont {
-  font-family: myThirdFont, sans-serif;
+  font-family: myThirdFont, mySecondFont, sans-serif;
   font-size: 18px;
   direction: rtl;
 }

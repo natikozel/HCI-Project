@@ -117,7 +117,7 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
 
                                 <div className={classes.depth4Frame}>
                                     <button className={classes.depth3Frame}
-                                            onClick={() => navigate(`/myProcess/${myId}`)}>
+                                            onClick={() => navigate(-1)}>
                                         <div className={classes.depth4Frame}>
                                             <div className={classes.depth5Frame}>
                                                 {/*<div className={classes.vector}>*/}
