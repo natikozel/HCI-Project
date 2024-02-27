@@ -7,6 +7,21 @@ import {VectorIcon2} from './VectorIcon2';
 import {VectorIcon} from './VectorIcon';
 import {useNavigate} from "react-router-dom";
 import Cookies from "universal-cookie";
+import {
+    DialogFooter,
+    DialogClose,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle
+} from '../ui/dialog';
+// @ts-ignore
+import {DialogTrigger} from "@radix-ui/react-dialog";
+import {CopyIcon} from "@radix-ui/react-icons";
+import {Input} from "../ui/input";
+import {Label} from "../ui/label";
+import {Button} from "../ui/button";
 
 interface Props {
     className?: string;
@@ -161,15 +176,17 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </div>
                 </div>
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth2Frame2}>
-                        <div className={classes.toGetStartedWeLlNeedAFewDetail}>
+                {/*<div className={classes.t3}>*/}
+                    <div className={classes.t4}>
                             {used ?
-                                <h1 style={{direction: "rtl", color: "red"}} className={classes.cfont}>"למספר זהות זה
-                                    כבר משוייך תהליך, אנא בדוק פרטיך."</h1> : null}
-                        </div>
+                                <div className={classes.t1}>
+                                     <div style={{direction: "rtl", color: "red", textWrap: "wrap"}} className={classes.cfont}>
+                                         למספר זהות זה כבר משוייך תהליך, אנא בדוק פרטיך שנית.
+                                     </div>
+                                </div>
+                                : null}
                     </div>
-                </div>
+                {/*</div>*/}
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
                         <div className={classes.accountHolderID}>מספר זהות</div>
@@ -177,10 +194,10 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                 </div>
                 {isFailed.find((i: any) => i.id === true) ?
                     <div style={{direction: "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
-                            <h1 style={{direction: "rtl", color: "red", textAlign: "right"}}
-                                className={classes.cfont}>
-                                {isFailed.find((i: any) => i.id === true)?.message}
-                            </h1>
+                        <h1 style={{direction: "rtl", color: "red", textAlign: "right"}}
+                            className={classes.cfont}>
+                            {isFailed.find((i: any) => i.id === true)?.message}
+                        </h1>
                     </div>
                     : null}
                 <div className={classes.depth1Frame2}>
@@ -263,6 +280,16 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                     <div className={classes.depth5Frame6}>
                         <input className={classes.dates} type={"date"}
                                onChange={(date: any) => {
+                                   setIsFailed(prevState => {
+                                       const newArr = [...prevState];
+                                       let newDate = newArr.find((i: any) => i.date === true);
+                                       newDate = {
+                                           date: false,
+                                           message: ""
+                                       };
+                                       newArr[2] = newDate;
+                                       return newArr;
+                                   });
                                    setDate(date.target);
                                    setIsFailed(prevState => {
                                        const newArr = [...prevState];
@@ -274,19 +301,6 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                        return newArr;
                                    });
                                }}
-                               onFocus={() => {
-                                   setIsFailed(prevState => {
-                                       const newArr = [...prevState];
-                                       let newDate = newArr.find((i: any) => i.date === true);
-                                       newDate = {
-                                           date: false,
-                                           message: ""
-                                       };
-                                       newArr[2] = newDate;
-                                       return newArr;
-                                   });
-                               }
-                               }
                         />
                         <div className={classes.depth6Frame1}>
                             <div className={classes.depth7Frame3}>
@@ -300,15 +314,46 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/>
 
-                <div className={classes.depth1Frame8}>
-                    <button className={classes.depth2Frame8} onClick={onSubmit}>
-                        <div className={classes.depth3Frame6}>
-                            <div className={classes.depth4Frame8}>
-                                <div className={classes.create}>החל תהליך</div>
-                            </div>
+                {/*<div className={classes.depth1Frame8}>*/}
+                {/*    <button className={classes.depth2Frame8} onClick={onSubmit}>*/}
+                {/*        <div className={classes.depth3Frame6}>*/}
+                {/*            <div className={classes.depth4Frame8}>*/}
+                {/*                <div className={classes.create}>החל תהליך</div>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*    </button>*/}
+                {/*</div>*/}
+                <Dialog>
+                    <DialogTrigger asChild>
+                        {/*<Button variant="outline">Share</Button>*/}
+                        <div className={classes.depth1Frame8}>
+                            <button className={classes.depth2Frame8}>
+                                <div className={classes.depth3Frame6}>
+                                    <div className={classes.depth4Frame8}>
+                                        <div className={classes.create}>החל תהליך</div>
+                                    </div>
+                                </div>
+                            </button>
                         </div>
-                    </button>
-                </div>
+                    </DialogTrigger>
+                    {/*<DialogContent className="sm:max-w-md">*/}
+                    <DialogContent className="w-9/12">
+                        <DialogHeader>
+                            <DialogTitle>?האם אתה בטוח</DialogTitle>
+                            <DialogDescription style={{textAlign: "center"}} className={"justify-end"}>
+                                יש לך הזדמנות נוספת לבדוק את פרטיך
+                            </DialogDescription>
+                        </DialogHeader>
+                        <DialogFooter className="justify-center sm:justify-center">
+                            <DialogClose asChild>
+                                <Button style={{backgroundColor: "#1a80e5"}} variant={"blue"} onClick={onSubmit}
+                                        type="button">
+                                    סיים ושלח
+                                </Button>
+                            </DialogClose>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
                 <div className={classes.depth1Frame9}></div>
             </div>
         </div>
