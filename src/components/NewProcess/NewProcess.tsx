@@ -21,7 +21,20 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
     const [status, setStatus] = useState("דייר יוצא");
     const [dateTitle, setDateTitle] = useState("תאריך יציאה");
     const [date, setDate]: any = useState();
-    const [isFailed, setIsFailed] = useState(false);
+    const [isFailed, setIsFailed] = useState([
+        {
+            id: false,
+            message: ''
+        },
+        {
+            status: false,
+            message: ''
+        },
+        {
+            date: false,
+            message: ''
+        }
+    ]);
     const [used, setUsed] = useState(false);
 
     const onStatusChange = (e: any) => {
@@ -36,10 +49,49 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
     };
 
     const onSubmit = () => {
-        if (!id || id!.toString().length !== 9 || !status || !date) {
-            setIsFailed(true);
-            return;
+
+        if (!id || id.length !== 9) {
+            setIsFailed(prevState => {
+                const newArr = [...prevState];
+                let newId = newArr.find((i: any) => i.id === false);
+                newId = {
+                    id: true,
+                    message: "מספר הזהות חייב להכיל 9 ספרות בדיוק!"
+                };
+                newArr[0] = newId;
+                return newArr;
+            });
         }
+
+        if (!status) {
+            setIsFailed(prevState => {
+                const newArr = [...prevState];
+                let newStatus = newArr.find((i: any) => i.status === false);
+                newStatus = {
+                    status: true,
+                    message: "אנא בחר סטטוס דייר."
+                };
+                newArr[1] = newStatus;
+                return newArr;
+            });
+        }
+
+        if (!date) {
+            setIsFailed(prevState => {
+                const newArr = [...prevState];
+                let newDate = newArr.find((i: any) => i.date === false);
+                newDate = {
+                    date: true,
+                    message: "אנא בחר תאריך"
+                };
+                newArr[2] = newDate;
+                return newArr;
+            });
+        }
+
+        if (!id || id.length !== 9 || !date || !status)
+            return;
+
         if (!!cookies.get(id)) {
             setUsed(true);
             return;
@@ -112,8 +164,9 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                 <div className={classes.depth1Frame1}>
                     <div className={classes.depth2Frame2}>
                         <div className={classes.toGetStartedWeLlNeedAFewDetail}>
-                            {isFailed ? "...אופס! כנראה שכחנו משהו בטעות" : null}
-                            {used ? "למספר זהות זה כבר משוייך תהליך, אנא בדוק פרטיך." : null}
+                            {used ?
+                                <h1 style={{direction: "rtl", color: "red"}} className={classes.cfont}>"למספר זהות זה
+                                    כבר משוייך תהליך, אנא בדוק פרטיך."</h1> : null}
                         </div>
                     </div>
                 </div>
@@ -122,26 +175,38 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         <div className={classes.accountHolderID}>מספר זהות</div>
                     </div>
                 </div>
-
+                {isFailed.find((i: any) => i.id === true) ?
+                    <div style={{direction: "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
+                            <h1 style={{direction: "rtl", color: "red", textAlign: "right"}}
+                                className={classes.cfont}>
+                                {isFailed.find((i: any) => i.id === true)?.message}
+                            </h1>
+                    </div>
+                    : null}
                 <div className={classes.depth1Frame2}>
                     <div className={classes.depth2Frame3}>
                         <div className={classes.depth3Frame3}>
                             <div className={classes.depth4Frame4}>
                                 <div className={classes.depth5Frame3}>
-                                    {/*<div className={classes.depth6Frame2}>*/}
-                                    {/*    <div className={classes.depth7Frame}>*/}
                                     <input required minLength={9} maxLength={9} onChange={onIdChange} value={id}
                                            type="number"
                                            placeholder={"הזן את מספר הזהות שלך כאן"}
                                            className={classes.enterYourAccountHolderID}
                                            onFocus={() => {
-                                               setIsFailed(false);
+                                               setIsFailed(prevState => {
+                                                   const newArr = [...prevState];
+                                                   let newId = newArr.find((i: any) => i.id === true);
+                                                   newId = {
+                                                       id: false,
+                                                       message: "מספר הזהות חייב להכיל 9 ספרות בדיוק!"
+                                                   };
+                                                   newArr[0] = newId;
+                                                   return newArr;
+                                               });
                                                setUsed(false);
                                            }}
                                     >
                                     </input>
-                                    {/*</div>*/}
-                                    {/*</div>*/}
                                 </div>
                             </div>
                         </div>
@@ -163,8 +228,6 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                         className={status === "דייר יוצא" ? classes.selectedResident : classes.unselectedResident}>
                                         דייר יוצא
                                     </div>
-                                    {/*<input type="radio" id="incoming" name="residentStatus" value="incoming" className="input-radio"></input>*/}
-                                    {/*    <label htmlFor="incoming" className="label-radio">Outgoing Resident</label>*/}
                                 </div>
                             </div>
                         </div>
@@ -177,8 +240,6 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                                         className={status === "דייר נכנס" ? classes.selectedResident : classes.unselectedResident}>דייר
                                         נכנס
                                     </div>
-                                    {/*<input type="radio" id="incoming" name="residentStatus" value="incoming" className="input-radio"></input>*/}
-                                    {/*<label htmlFor="incoming" className="label-radio">Incoming Resident</label>*/}
                                 </div>
                             </div>
                         </div>
@@ -190,32 +251,52 @@ export const NewProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
                         <div className={classes.leavingEnteringDate}>{dateTitle}</div>
                     </div>
                 </div>
+                {isFailed.find((i: any) => i.date === true) ?
+                    <div style={{direction: "rtl"}} className={classes.toGetStartedWeLlNeedAFewDetail}>
+                        <h1 style={{direction: "rtl", color: "red", textAlign: "right"}}
+                            className={classes.cfont}>
+                            {isFailed.find((i: any) => i.date === true)?.message}
+                        </h1>
+                    </div>
+                    : null}
                 <div className={classes.depth1Frame6}>
-                    {/*<div className={classes.depth2Frame7}>*/}
-                    {/*    <div className={classes.depth3Frame5}>*/}
-                            {/*<div className={classes.depth4Frame1}>*/}
-                                <div className={classes.depth5Frame6}>
-                                    {/*<div className={classes.depth6Frame3}>*/}
-                                    {/*    <div className={classes.depth7Frame2}>*/}
-                                            <input className={classes.dates} type={"date"}
-                                                   onChange={(date: any) => {
-                                                       setDate(date.target);
-                                                       setIsFailed(false);
-                                                   }}/>
-                                        {/*</div>*/}
-                                    {/*</div>*/}
-                                    <div className={classes.depth6Frame1}>
-                                        <div className={classes.depth7Frame3}>
-                                            <div className={classes.vector2}>
-                                                <VectorIcon2 className={classes.icon2}/>
-                                            </div>
-                                            <div className={classes.depth8Frame}></div>
-                                        </div>
-                                    </div>
+                    <div className={classes.depth5Frame6}>
+                        <input className={classes.dates} type={"date"}
+                               onChange={(date: any) => {
+                                   setDate(date.target);
+                                   setIsFailed(prevState => {
+                                       const newArr = [...prevState];
+                                       let newDate = newArr.find((i: any) => i.date);
+                                       newDate = {
+                                           date: true,
+                                           message: "אנא בחר תאריך."
+                                       };
+                                       return newArr;
+                                   });
+                               }}
+                               onFocus={() => {
+                                   setIsFailed(prevState => {
+                                       const newArr = [...prevState];
+                                       let newDate = newArr.find((i: any) => i.date === true);
+                                       newDate = {
+                                           date: false,
+                                           message: ""
+                                       };
+                                       newArr[2] = newDate;
+                                       return newArr;
+                                   });
+                               }
+                               }
+                        />
+                        <div className={classes.depth6Frame1}>
+                            <div className={classes.depth7Frame3}>
+                                <div className={classes.vector2}>
+                                    <VectorIcon2 className={classes.icon2}/>
                                 </div>
-                            {/*</div>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
+                                <div className={classes.depth8Frame}></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/>
 

@@ -18,6 +18,7 @@ export const WelcomePage: FC<Props> = memo(function WelcomePage(props = {}) {
     const swipeRight = `${classes.depth4Frame12} ${animation?.includes('Right') ? animation : null}`
     const swipeLeft = `${classes.depth4Frame4} ${animation?.includes('Left') ? animation : null}`
 
+
     const payTaxes = () => {
         setTimeout(() => navigate('/continue'), 700);
         setAnimation("animate__animated animate__slideOutRight");

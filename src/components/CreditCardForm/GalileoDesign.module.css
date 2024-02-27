@@ -560,7 +560,7 @@ input:focus {
     align-items: center;
     padding: 0 20px;
     border-radius: 12px;
-    background-color: #1a1ae5;
+    background-color: #1a80e5;
     overflow: hidden;
 }
 
@@ -568,7 +568,7 @@ input:focus {
     /*width: 75.1563px;*/
     height: 24px;
     flex-direction: column;
-    background-color: #1a1ae5;
+    background-color: #1a80e5;
     overflow: hidden;
 }
 
