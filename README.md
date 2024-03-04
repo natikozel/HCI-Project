@@ -19,7 +19,7 @@ This is a final project for the Human-Computer Integrations college course, show
 
 ## Installation
 
-1. **Clone the repository**: `git clone https://github.com/natikozel/hci-project.git`
+1. **Clone the repository**: `git clone https://github.com/natikozel/HCI-Project.git`
 2. **Install dependencies**: `npm install`
 
 ## Usage
