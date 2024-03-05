@@ -173,6 +173,14 @@
   height: 40px;
   align-items: flex-start;
 }
+
+.but {
+
+    /*width: 358px;*/
+    height: 40px;
+    align-items: flex-start;
+
+}
 .depth4Frame3 {
   width: 358px;
   height: 40px;
@@ -186,14 +194,16 @@
   align-items: center;
   padding: 0 16px;
   border-radius: 12px;
-  background-color: #f0f2f5;
+  background-color: #1a80e5;
+
   overflow: hidden;
 }
 .depth6Frame4 {
   /*width: 76.5938px;*/
   height: 21px;
   flex-direction: column;
-  background-color: #f0f2f5;
+  background-color: #1a80e5;
+
   overflow: hidden;
 }
 .depth7Frame2 {
@@ -203,7 +213,7 @@
   flex-direction: column;
 }
 .editProfile {
-  color: #121717;
+  color: #FFFFFF;
   font-size: 14px;
   line-height: 21px;
   font-weight: bold;

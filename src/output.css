@@ -648,28 +648,16 @@ body {
   width: 1rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
-.w-16 {
-  width: 4rem;
-}
-
-.w-44 {
-  width: 11rem;
-}
-
 .w-9\/12 {
   width: 75%;
 }
 
-.max-w-lg {
-  max-width: 32rem;
+.w-full {
+  width: 100%;
 }
 
-.flex-1 {
-  flex: 1 1 0%;
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .shrink-0 {
@@ -710,10 +698,6 @@ body {
   gap: 1rem;
 }
 
-.gap-2 {
-  gap: 0.5rem;
-}
-
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -730,12 +714,6 @@ body {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-
-.space-x-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .whitespace-nowrap {
@@ -1212,10 +1190,6 @@ body label {
 
   .sm\:flex-row {
     flex-direction: row;
-  }
-
-  .sm\:justify-start {
-    justify-content: flex-start;
   }
 
   .sm\:justify-end {

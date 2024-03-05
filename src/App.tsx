@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         element: <NewProcess/>
     },
     {
-        path: '/continue',
+        path: '/login/:nextPage',
         element: <ContinueProcess/>
     },
     {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <MyProcessList/>
     },
     {
-        path: '/myProcess/:myId/MyList/mytaxes',
+        path: '/myProcess/:myId/myList/mytaxes',
         element: <MyTaxes/>
     },
 ]);

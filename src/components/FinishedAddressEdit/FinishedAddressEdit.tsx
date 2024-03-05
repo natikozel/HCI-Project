@@ -4,7 +4,7 @@ import type {FC} from 'react';
 import resets from '../_resets.module.css';
 import classes from './GalileoDesign.module.css';
 import {VectorIcon} from './VectorIcon';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 interface Props {
     className?: string;
@@ -13,6 +13,7 @@ interface Props {
 /* @figmaId 69:161 */
 export const FinishedAddressEdit: FC<Props> = memo(function GalileoDesign(props = {}) {
 
+    const {myId} = useParams();
     const navigate = useNavigate();
 
     return (
@@ -88,7 +89,7 @@ export const FinishedAddressEdit: FC<Props> = memo(function GalileoDesign(props 
 
                 <br/><br/><br/><br/><br/><br/><br/>
                 <div className={classes.depth1Frame5}>
-                    <button className={classes.depth2Frame5} onClick={() => navigate(-2)}>
+                    <button className={classes.depth2Frame5} onClick={() => navigate(`/myProcess/${myId}`)}>
                         <div className={classes.depth3Frame4}>
                             <div className={classes.depth4Frame5}>
                                 <div className={classes.thankYou}>תודה</div>

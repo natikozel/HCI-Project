@@ -14,20 +14,21 @@ interface Props {
 export const WelcomePage: FC<Props> = memo(function WelcomePage(props = {}) {
 
     const navigate = useNavigate();
-    const [animation, setAnimation] : any= useState();
-    const swipeRight = `${classes.depth4Frame12} ${animation?.includes('Right') ? animation : null}`
-    const swipeLeft = `${classes.depth4Frame4} ${animation?.includes('Left') ? animation : null}`
-
+    const [animation, setAnimation]: any = useState();
+    const swipeRight = `${classes.depth4Frame12} ${animation?.includes('Right') ? animation : null}`;
+    const swipeLeft = `${classes.depth4Frame4} ${animation?.includes('Left') ? animation : null}`;
 
     const payTaxes = () => {
-        setTimeout(() => navigate('/continue'), 700);
-        setAnimation("animate__animated animate__slideOutRight");
+        setTimeout(() => navigate('/login/myList'), 700);
+        // setAnimation("animate__animated animate__slideOutRight");
     };
 
     const changeAddress = () => {
-        setTimeout(() => navigate('/continue'), 700);
-        setAnimation("animate__animated animate__slideOutLeft");
+        setTimeout(() => navigate('/login/editaddress'), 700);
+        // setAnimation("animate__animated animate__slideOutLeft");
     };
+
+
     return (
         <div className={`${resets.storybrainResets} ${classes.root}`}>
             <div className={classes.depthFrame}>
@@ -97,25 +98,24 @@ export const WelcomePage: FC<Props> = memo(function WelcomePage(props = {}) {
                             </div>
                         </div>
                         <div className={classes.depth3Frame12}>
-                            <div className={swipeLeft} onClick={changeAddress}>
+                            <button className={swipeLeft} onClick={changeAddress}>
+                                <div className={classes.depth5Frame12}>
+                                    {/*<div className={classes.depth6Frame7}>*/}
+                                        <div style={{direction: "rtl"}} className={classes.payRent}>שנה כתובת מגורים</div>
+                                    {/*</div>*/}
+                                </div>
                                 <div className={classes.depth5Frame5}>
                                     <div className={classes.depth6Frame6}></div>
                                 </div>
-                                <div className={classes.depth5Frame12}>
-                                    <div className={classes.depth6Frame7}>
-                                        <div style={{direction: "rtl"}} className={classes.payRent}>שנה כתובת מגורים
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </button>
                             <button className={swipeRight} onClick={payTaxes}>
+                                <div className={classes.depth5Frame13}>
+                                    {/*<div className={classes.depth6Frame9}>*/}
+                                        <div style={{direction: "rtl"}} className={classes.payBills}>שלם מיסים</div>
+                                    {/*</div>*/}
+                                </div>
                                 <div className={classes.depth5Frame6}>
                                     <div className={classes.depth6Frame8}></div>
-                                </div>
-                                <div className={classes.depth5Frame13}>
-                                    <div className={classes.depth6Frame9}>
-                                        <div style={{direction: "rtl"}} className={classes.payBills}>שלם מיסים</div>
-                                    </div>
                                 </div>
                             </button>
                         </div>

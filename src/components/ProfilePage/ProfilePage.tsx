@@ -58,7 +58,7 @@ export const ProfilePage: FC<Props> = memo(function GalileoDesign(props = {}) {
                                 </div>
                             </div>
                         </div>
-                        <button className={classes.depth3Frame12} onClick={() => navigate('editpersonal')} >
+                        <button className={classes.but} onClick={() => navigate('editpersonal')} >
                             <div className={classes.depth4Frame3}>
                                 <div className={classes.depth5Frame4}>
                                     <div className={classes.depth6Frame4}>

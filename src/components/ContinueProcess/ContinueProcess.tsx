@@ -4,16 +4,18 @@ import Cookies from "universal-cookie";
 import resets from '../_resets.module.css';
 import classes from './GalileoDesign.module.css';
 import {VectorIcon} from './VectorIcon';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 interface Props {
-    className?: string;
+    className?: string,
 }
 
+
 /* @figmaId 25:392 */
-export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}) {
+export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props) {
 
     const cookies = new Cookies();
+    const {nextPage} = useParams();
     const navigate = useNavigate();
     const [id, setId]: any = useState();
     const [alertMessage, setAlertMessage] = useState(false);
@@ -31,9 +33,16 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
             setChars(true);
             return;
         }
-
-        if (cookies.get(id)) {
-            navigate(`/myProcess/${id}`);
+        const myCookie = cookies.get(id);
+        if (myCookie) {
+            cookies.set(id, {
+                ...myCookie,
+                login: true
+            });
+            if (nextPage === 'editaddress')
+                navigate(`/myProcess/${id}/editaddress`);
+            else if (nextPage === 'myList')
+                navigate(`/myProcess/${id}/myList`);
         } else
             setAlertMessage(true);
     };
@@ -92,49 +101,49 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props = {}
                                                setAlertMessage(false);
                                                setChars(false);
                                            }}>
-                                               </input>
-                                           {/*</div>*/}
-                                           {/*</div>*/}
-                                               </div>
-                                               </div>
-                                               </div>
-                                               </div>
-                                               </div>
-                                               <div className={classes.depth1Frame1}>
-                                        <div className={classes.depth2Frame2}>
-                                            <div style={{direction: "rtl"}}
-                                                 className={classes.toGetStartedWeLlNeedAFewDetail}>
-                                                {alertMessage ?
-                                                    <h1 style={{color: "red"}} className={classes.cfont}>
-                                                        {
-                                                            `מספר הזהות שהוכנס אינו קיים במערכת`
-                                                        }
-                                                    </h1>
-                                                    : null}
-                                                {chars ?
-                                                    <h1 style={{color: "red"}} className={classes.cfont}>
-                                                        {
-                                                            `מספר הזהות חייב להכיל 9 תווים בדיוק`
-                                                        }
-                                                    </h1>
-                                                    : null
-                                                }
-                                            </div>
-                                        </div>
+                                    </input>
+                                    {/*</div>*/}
+                                    {/*</div>*/}
                                 </div>
-                                <div className={classes.depth1Frame7}></div>
-
-                                <div className={classes.depth1Frame8}>
-                                    <button onClick={onSubmit} className={classes.depth2Frame8}>
-                                        <div className={classes.depth3Frame6}>
-                                            <div className={classes.depth4Frame8}>
-                                                <div className={classes.create}>המשך</div>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div className={classes.depth1Frame9}></div>
                             </div>
                         </div>
-                        );
-                        });
+                    </div>
+                </div>
+                <div className={classes.depth1Frame1}>
+                    <div className={classes.depth2Frame2}>
+                        <div style={{direction: "rtl"}}
+                             className={classes.toGetStartedWeLlNeedAFewDetail}>
+                            {alertMessage ?
+                                <h1 style={{color: "red"}} className={classes.cfont}>
+                                    {
+                                        `מספר הזהות שהוכנס אינו קיים במערכת`
+                                    }
+                                </h1>
+                                : null}
+                            {chars ?
+                                <h1 style={{color: "red"}} className={classes.cfont}>
+                                    {
+                                        `מספר הזהות חייב להכיל 9 תווים בדיוק`
+                                    }
+                                </h1>
+                                : null
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div className={classes.depth1Frame7}></div>
+
+                <div className={classes.depth1Frame8}>
+                    <button onClick={onSubmit} className={classes.depth2Frame8}>
+                        <div className={classes.depth3Frame6}>
+                            <div className={classes.depth4Frame8}>
+                                <div className={classes.create}>המשך</div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <div className={classes.depth1Frame9}></div>
+            </div>
+        </div>
+    );
+});

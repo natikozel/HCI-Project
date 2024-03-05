@@ -147,6 +147,8 @@
   flex-direction: column;
 }
 .depth7Frame2 {
+  margin-top: 30px;
+  text-shadow: #12c4ea 1px 0 10px;
   height: min-content;
   align-self: stretch;
   flex-direction: column;
@@ -155,7 +157,7 @@
 .payYourRentBillsAndMoreWithACr {
   color: #ffffff;
   /*font-*/
-  font-size: 36px;
+  font-size: 38px;
   line-height: 45px;
   font-weight: 900;
   /*font-weight: bold;*/
@@ -361,7 +363,6 @@
   height: 145.3125px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
 }
 .depth5Frame5 {
   width: 173px;
@@ -381,6 +382,7 @@
   overflow: hidden;
 }
 .depth5Frame12 {
+  text-align: right;
   width: 173px;
   height: 36px;
   flex-direction: column;
@@ -407,6 +409,13 @@
   flex-direction: column;
 }
 .depth4Frame12 {
+  /*border: 1px solid red;*/
+  /*border-bottom: 5px solid blue;*/
+  /*border: 10px solid turquoise;*/
+  /*border-left: 10px solid purple;*/
+  /*border-right: 10px solid green;*/
+  /*border-top-right-radius: 20px;*/
+  /*border-top-left-radius: 20px;*/
   position: absolute;
   left: 185px;
   top: 0;
@@ -414,7 +423,6 @@
   height: 145.3125px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
 }
 .depth5Frame6 {
   width: 173px;
@@ -434,6 +442,7 @@
   overflow: hidden;
 }
 .depth5Frame13 {
+  text-align: right;
   width: 173px;
   height: 36px;
   flex-direction: column;
