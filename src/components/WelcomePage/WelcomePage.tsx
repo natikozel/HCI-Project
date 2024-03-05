@@ -19,12 +19,14 @@ export const WelcomePage: FC<Props> = memo(function WelcomePage(props = {}) {
     const swipeLeft = `${classes.depth4Frame4} ${animation?.includes('Left') ? animation : null}`;
 
     const payTaxes = () => {
-        setTimeout(() => navigate('/login/myList'), 700);
+        // setTimeout(() => navigate('/login/myList'), 700);
+        navigate('/login/myList')
         // setAnimation("animate__animated animate__slideOutRight");
     };
 
     const changeAddress = () => {
-        setTimeout(() => navigate('/login/editaddress'), 700);
+        // setTimeout(() => navigate('/login/editaddress'), 700);
+        navigate('/login/editaddress')
         // setAnimation("animate__animated animate__slideOutLeft");
     };
 
