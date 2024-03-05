@@ -126,7 +126,7 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                 <div className={classes.depth1Frame}>
                     <div className={classes.depth2Frame}>
                         <div className={classes.depth3Frame}>
-                            <button className={classes.depth4Frame} onClick={() => navigate(-1)}>
+                            <button className={classes.depth4Frame} onClick={() => navigate(`/myProcess/${myId}`)}>
                                 <div className={classes.depth5Frame}>
                                     <div className={classes.vector}>
                                         <VectorIcon className={classes.icon}/>
@@ -149,11 +149,12 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                 </div>
 
 
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth3Frame3}>
-                        <div style={{direction: "rtl"}} className={classes.firstName}>עיר</div>
+                <div className={classes.t1}>
+                    <div className={classes.t2}>
+                        <div className={classes.t3}>עיר</div>
                     </div>
                 </div>
+
                 <div style={{direction: "rtl"}}>
                     {error.city ?
                         <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
@@ -162,23 +163,33 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                         : null
                     }
                 </div>
-
-                <div className={classes.depth4Frame1}>
-                    <div className={classes.depth5Frame3}>
-                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                   name={"city"} onFocus={handleInputFocus}
-                                   value={user.city} onChange={editInput}/>
+                <div className={classes.t4}>
+                    <div className={classes.t5}>
+                        <div className={classes.t6}>
+                            <div className={classes.t7}>
+                                <div className={classes.t8}>
+                                    <input style={{direction: "rtl", textAlign: "right"}}
+                                           type={"text"}
+                                           name={"city"}
+                                           className={classes.t9}
+                                           onFocus={handleInputFocus}
+                                           value={user.city}
+                                           onChange={editInput}
+                                           placeholder={"הקלד כאן שם העיר שלך"}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
 
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth3Frame3}>
-                        <div style={{direction: "rtl"}} className={classes.firstName}>רחוב</div>
+                <div className={classes.t1}>
+                    <div className={classes.t2}>
+                        <div className={classes.t3}>רחוב</div>
                     </div>
                 </div>
+
                 <div style={{direction: "rtl"}}>
                     {error.street ?
                         <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
@@ -187,22 +198,29 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                         : null
                     }
                 </div>
-                <div className={classes.depth4Frame1}>
-                    <div className={classes.depth5Frame3}>
-                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                   name={"street"} onFocus={handleInputFocus}
-                                   value={user.street} onChange={editInput}/>
+
+                <div className={classes.t4}>
+                    <div className={classes.t5}>
+                        <div className={classes.t6}>
+                            <div className={classes.t7}>
+                                <div className={classes.t8}>
+                                    <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
+                                           className={classes.t9}
+                                           name={"street"} onFocus={handleInputFocus}
+                                           placeholder={"הקלד כאן את שם הרחוב"}
+                                           value={user.street} onChange={editInput}/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth3Frame3}>
-                        <div style={{direction: "rtl"}} className={classes.firstName}>מס' דירה</div>
+                <div className={classes.t1}>
+                    <div className={classes.t2}>
+                        <div className={classes.t3}>מס דירה</div>
                     </div>
                 </div>
+
                 <div style={{direction: "rtl"}}>
                     {error.street2 ?
                         <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
@@ -211,22 +229,29 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                         : null
                     }
                 </div>
-                <div className={classes.depth4Frame1}>
-                    <div className={classes.depth5Frame3}>
-                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                   name={"street2"} onFocus={handleInputFocus}
-                                   value={user.street2} onChange={editInput}/>
+                <div className={classes.t4}>
+                    <div className={classes.t5}>
+                        <div className={classes.t6}>
+                            <div className={classes.t7}>
+                                <div className={classes.t8}>
+                                    <input style={{direction: "rtl", textAlign: "left"}} type={"number"}
+                                           className={classes.t9}
+                                           name={"street2"} onFocus={handleInputFocus}
+                                           placeholder={"הקלד כאן את מספר הדירה"}
+                                           value={user.street2} onChange={editInput}/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
 
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth3Frame3}>
-                        <div style={{direction: "rtl"}} className={classes.firstName}>מיקוד</div>
+                <div className={classes.t1}>
+                    <div className={classes.t2}>
+                        <div className={classes.t3}>מיקוד</div>
                     </div>
                 </div>
+
                 <div style={{direction: "rtl"}}>
                     {error.zipcode ?
                         <h1 style={{textAlign: "right", direction: "rtl", color: "red"}}>
@@ -235,12 +260,18 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                         : null
                     }
                 </div>
-                <div className={classes.depth4Frame1}>
-                    <div className={classes.depth5Frame3}>
-                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                   name={"zipcode"} onFocus={handleInputFocus}
-                                   value={user.zipcode} onChange={editInput}/>
+                <div className={classes.t4}>
+                    <div className={classes.t5}>
+                        <div className={classes.t6}>
+                            <div className={classes.t7}>
+                                <div className={classes.t8}>
+                                    <input style={{textAlign: "left"}} type={"number"}
+                                           className={classes.t9}
+                                           placeholder={"הקלד את המיקוד כאן"}
+                                           name={"zipcode"} onFocus={handleInputFocus}
+                                           value={user.zipcode} onChange={editInput}/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -328,7 +359,6 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </div>
                     </button>
                 </div>
-                <div className={classes.depth1Frame8}></div>
             </div>
         </div>
     )

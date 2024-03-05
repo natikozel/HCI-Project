@@ -276,6 +276,7 @@
   height: min-content;
   white-space: nowrap;
   flex-direction: column;
+  font-weight: bold;
 }
 .depth3Frame13 {
   width: 28px;

@@ -137,11 +137,9 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                     </div>
                 </div>
 
-
-
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth3Frame3}>
-                        <div style={{direction: "rtl"}} className={classes.firstName}>שם מלא</div>
+                <div className={classes.t1}>
+                    <div className={classes.t2}>
+                        <div className={classes.t3}>שם מלא</div>
                     </div>
                 </div>
 
@@ -153,26 +151,30 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                         : null
                     }
                 </div>
-                <div className={classes.depth4Frame1}>
-                    <div className={classes.depth5Frame3}>
-                        {/*<div className={classes.depth6Frame2}>*/}
-                        <div style={{textAlign: "right"}} className={classes.depth7Frame}>
-                            <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
-                                   name={"name"} onFocus={handleInputFocus}
-                                   value={user.name} onChange={editInput}/>
-                            {/*<div className={classes.ellis}>Ellis</div>*/}
+                <div className={classes.t4}>
+                    <div className={classes.t5}>
+                        <div className={classes.t6}>
+                            <div className={classes.t7}>
+                                <div className={classes.t8}>
+                                    <input style={{direction: "rtl", textAlign: "right"}} type={"text"}
+                                           name={"name"} onFocus={handleInputFocus}
+                                           className={classes.t9}
+                                           placeholder={"הקלד את שמך החדש כאן"}
+                                           value={user.name} onChange={editInput}/>
+                                </div>
+                            </div>
                         </div>
-                        {/*</div>*/}
                     </div>
                 </div>
 
 
-                <div className={classes.depth1Frame1}>
-                    <div className={classes.depth3Frame3}>
-                        <div style={{direction: "rtl"}} className={classes.firstName}>אימייל</div>
+
+
+                <div className={classes.t1}>
+                    <div className={classes.t2}>
+                        <div className={classes.t3}>אימייל</div>
                     </div>
                 </div>
-
 
                 <div>
                     {error.email ?
@@ -182,19 +184,24 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                         : null
                     }
                 </div>
-
-                <div className={classes.depth4Frame1}>
-                    <div className={classes.depth5Frame3}>
-                        {/*<div className={classes.depth6Frame2}>*/}
-                        <div style={{textAlign: "right"}} className={classes.depth7Frame2}>
-                            <input type={"email"}
-                                   name={"email"} onFocus={handleInputFocus}
-                                   value={user.email} onChange={editInput}/>
-                            {/*<div className={classes.ellis}>Ellis</div>*/}
+                <div className={classes.t4}>
+                    <div className={classes.t5}>
+                        <div className={classes.t6}>
+                            <div className={classes.t7}>
+                                <div className={classes.t8}>
+                                    <input type={"email"}
+                                           className={classes.t9}
+                                           name={"email"} onFocus={handleInputFocus}
+                                           placeholder={"הקלד את האימייל החדש שלך כאן"}
+                                           value={user.email} onChange={editInput}/>
+                                </div>
+                            </div>
                         </div>
-                        {/*</div>*/}
                     </div>
                 </div>
+
+
+
 
                 {/*<div className={classes.depth1Frame1}>*/}
                 {/*    <div className={classes.depth2Frame2}>*/}
@@ -225,14 +232,15 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                 {/*        </div>*/}
                 {/*    </div>*/}
                 {/*</div>*/}
+                <br/><br/><br/>
 
-                <div className={classes.t1}>
-                    <div className={classes.t2}>
+                <div className={classes.t10}>
+                    <div className={classes.t11}>
                         <div
                             className={user.status === "דייר יוצא" ? classes.selectedStatus : classes.unselectedStatus}
                             onClick={onStatusChange}>
-                            <div className={classes.t3}>
-                                <div className={classes.t4}>
+                            <div className={classes.t12}>
+                                <div className={classes.t13}>
                                     <div
                                         className={user.status === "דייר יוצא" ? classes.selectedResident : classes.unselectedResident}>
                                         דייר יוצא
@@ -243,8 +251,8 @@ export const EditPersonal: FC<Props> = memo(function GalileoDesign(props = {}) {
                         <div
                             className={user.status === "דייר נכנס" ? classes.selectedStatus : classes.unselectedStatus}
                             onClick={onStatusChange}>
-                            <div className={classes.t5}>
-                                <div className={classes.t6}>
+                            <div className={classes.t14}>
+                                <div className={classes.t15}>
                                     <div
                                         className={user.status === "דייר נכנס" ? classes.selectedResident : classes.unselectedResident}>
                                         דייר נכנס
