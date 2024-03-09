@@ -39,6 +39,7 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
     const {myId}: any = useParams();
     const myProgress = cookies.get(myId);
     const [done, setDone] = useState(false);
+    const [error, setError] = useState(false);
     const [checked, setChecked] = useState(
         myProgress.taxes.filter((tax: any) => !tax.paid).map((tax: any) => {
             return {
@@ -51,7 +52,7 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
     const total = checked.filter((tax: any) => tax.checked).reduce((total: any, item: any) => total + item.amount, 0);
 
     const onCheck = (bol: any, name: any) => {
-
+        setError(false);
         setChecked((prevChecked: any) => {
             const newArr: any = [...prevChecked];
             const newItem = newArr.find((item: any) => item.name === name);
@@ -61,8 +62,10 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
     };
 
     const onSubmit = () => {
-        if (checked.filter((item: any) => item.checked).length <= 0)
+        if (checked.filter((item: any) => item.checked).length <= 0) {
+            setError(true);
             return;
+        }
         setDone(true);
         const newTaxArr = [...myProgress.taxes];
 
@@ -366,13 +369,23 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
 
 
                     <br/><br/><br/>
-                    <div className={classes.one}>
-                        <div className={classes.two}>
-                            <div style={{direction: "rtl"}} className={classes.cfont}>
-                                {`בסך הכל:         ${total} ₪`}
+                    {error ?
+                        <div className={classes.one}>
+                            <div className={classes.two}>
+                                <div style={{direction: "rtl", color: "red"}} className={classes.cfont}>
+                                    {"לא נבחרו מיסים לתשלום!"}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        :
+                        <div className={classes.one}>
+                            <div className={classes.two}>
+                                <div style={{direction: "rtl"}} className={classes.cfont}>
+                                    {`בסך הכל:         ${total} ₪`}
+                                </div>
+                            </div>
+                        </div>
+                    }
                     <br/><br/><br/><br/><br/><br/>
                     <Dialog>
                         <DialogTrigger asChild>
@@ -391,10 +404,12 @@ export const MyTaxes: FC<Props> = memo(function GalileoDesign(props = {}) {
                         <DialogContent className="w-9/12">
                             <DialogHeader>
                                 <DialogTitle style={{direction: "rtl"}}>האם אתה בטוח?</DialogTitle>
-                                <DialogDescription style={{textAlign: "center", direction: "rtl"}} className={"justify-end"}>
+                                <DialogDescription style={{textAlign: "center", direction: "rtl"}}
+                                                   className={"justify-end"}>
                                     {`סך התשלום עומד על ${total} ₪`}
                                 </DialogDescription>
-                                <DialogDescription style={{direction: "rtl", textAlign: "center"}} className={"justify-end"}>
+                                <DialogDescription style={{direction: "rtl", textAlign: "center"}}
+                                                   className={"justify-end"}>
                                     לא ניתן יהיה לחזור אחורה לאחר ביצוע התשלום!
                                 </DialogDescription>
                             </DialogHeader>

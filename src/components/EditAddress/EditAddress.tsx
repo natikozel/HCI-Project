@@ -6,7 +6,16 @@ import classes from './GalileoDesign.module.css';
 import {VectorIcon} from './VectorIcon';
 import {useNavigate, useParams} from "react-router-dom";
 import Cookies from "universal-cookie";
-import Payment from "payment";
+import {
+    Dialog, DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle
+} from "../ui/dialog";
+import {DialogTrigger} from "@radix-ui/react-dialog";
+import {Button} from "../ui/button";
 
 interface Props {
     className?: string;
@@ -106,7 +115,7 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
             return {
                 ...prevState,
                 [e.target.name]: false
-            }
+            };
         });
         // setError({
         //     city: false,
@@ -356,15 +365,38 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                 {/*    </div>*/}
                 {/*</div>*/}
                 <br/>
-                <div className={classes.depth1Frame7}>
-                    <button className={classes.depth2Frame7} onClick={handleSubmit}>
-                        <div className={classes.depth3Frame8}>
-                            <div className={classes.depth4Frame9}>
-                                <div className={classes.saveAndContinue}>שמור והמשך</div>
-                            </div>
+                <Dialog>
+                    <DialogTrigger asChild>
+                        {/*<Button variant="outline">Share</Button>*/}
+                        <div className={classes.depth1Frame7}>
+                            <button className={classes.depth2Frame7}>
+                                <div className={classes.depth3Frame8}>
+                                    <div className={classes.depth4Frame9}>
+                                        <div className={classes.saveAndContinue}>שמור והמשך</div>
+                                    </div>
+                                </div>
+                            </button>
                         </div>
-                    </button>
-                </div>
+                    </DialogTrigger>
+                    {/*<DialogContent className="sm:max-w-md">*/}
+                    <DialogContent className="w-9/12">
+                        <DialogHeader>
+                            <DialogTitle style={{direction: "rtl"}}>האם כל הפרטים נכונים?</DialogTitle>
+                            <DialogDescription style={{direction: "rtl", textAlign: "center"}}
+                                               className={"justify-end"}>
+                                בדוק שכל הפרטים שהזנת הם נכונים והמשך
+                            </DialogDescription>
+                        </DialogHeader>
+                        <DialogFooter className="justify-center sm:justify-center">
+                            <DialogClose asChild>
+                                <Button style={{backgroundColor: "#1a80e5"}} variant={"blue"} onClick={handleSubmit}
+                                        type="button">
+                                    המשך
+                                </Button>
+                            </DialogClose>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
             </div>
         </div>
     )
