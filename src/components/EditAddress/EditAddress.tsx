@@ -102,12 +102,18 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
 
 
     const handleInputFocus = (e: any) => {
-        setError({
-            city: false,
-            street: false,
-            street2: false,
-            zipcode: false,
+        setError(prevState => {
+            return {
+                ...prevState,
+                [e.target.name]: false
+            }
         });
+        // setError({
+        //     city: false,
+        //     street: false,
+        //     street2: false,
+        //     zipcode: false,
+        // });
     };
 
     const editInput = (e: any) => {
