@@ -540,6 +540,24 @@ input[type="date"]::-webkit-clear-button {
     flex-direction: column;
 }
 
+select {
+    color: rgba(0,0,0,0);
+}
+
+select {
+    color: rgba(0,0,0,0);
+    text-shadow: 0 0 0 #000;
+}
+
+select {
+    color: #000;
+    color: rgba(0,0,0,0);
+    text-shadow: 0 0 0 #000;
+}
+
+.no-textshadow select {
+    color: #000;
+}
 .t8 {
     width: 358px;
     height: 56px;

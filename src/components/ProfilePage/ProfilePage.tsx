@@ -71,6 +71,12 @@ export const ProfilePage: FC<Props> = memo(function GalileoDesign(props = {}) {
                         </button>
                     </div>
                 </div>
+                {/*<div style={{marginBottom: "10px", width: "100%", justifyContent: "center", display: "flex", alignItems: "flex-end", alignContent: "center"}}>*/}
+                {/*    <h1 style={{direction: "rtl", fontSize: "17.5px"}}>*/}
+                {/*        {"בחר באחת מהפעולות הבאות"}*/}
+                {/*    </h1>*/}
+                {/*    <br/>*/}
+                {/*</div>*/}
                 <button className={classes.depth1Frame2} onClick={() => navigate('myList')}>
                     <div className={classes.depth3Frame13}>
                         <div className={classes.depth4Frame5}>

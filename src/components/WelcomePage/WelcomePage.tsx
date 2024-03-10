@@ -76,7 +76,7 @@ export const WelcomePage: FC<Props> = memo(function WelcomePage(props = {}) {
                                 <div className={classes.depth5Frame1}>
                                     {/*<div className={classes.depth6Frame4}>*/}
                                     <div style={{direction: "rtl"}} className={classes.subtitle}>
-                                        {"לא רשום עדיין?"}
+                                        {"לא רשום עדיין ?"}
                                     </div>
                                     {/*</div>*/}
                                 </div>
@@ -93,12 +93,24 @@ export const WelcomePage: FC<Props> = memo(function WelcomePage(props = {}) {
                                 </button>
                             </div>
                         </div>
-                        <br/><br/>
+                        <br/>
                         <div className={classes.helper}>
                             <div className={classes.subtitle}>
-                                {"משתמש קיים?"}
+                                {"משתמש קיים ?"}
                             </div>
                         </div>
+                        <div className={classes.depth4Frame1}>
+                            <button className={classes.depth5Frame4} onClick={() => navigate('/login')}>
+                                <div className={classes.depth6Frame5}>
+                                    <div className={classes.depth7Frame4}>
+                                        <div className={classes.depth8Frame2}>
+                                            <div style={{direction: "rtl"}} className={classes.signUp}>התחבר</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <br/>
                         <div className={classes.depth3Frame12}>
                             <button className={swipeLeft} onClick={changeAddress}>
                                 <div className={classes.depth5Frame12}>

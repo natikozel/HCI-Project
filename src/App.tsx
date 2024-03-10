@@ -25,8 +25,15 @@ const router = createBrowserRouter([
         element: <NewProcess/>
     },
     {
-        path: '/login/:nextPage',
-        element: <ContinueProcess/>
+        // index: true,
+        path: '/login',
+        element: <ContinueProcess/>,
+        children: [
+            {
+                path: ':nextPage',
+                element: <ContinueProcess/>,
+            }
+        ],
     },
     {
         path: '/myProcess/:myId',

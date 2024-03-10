@@ -43,6 +43,8 @@ export const ContinueProcess: FC<Props> = memo(function GalileoDesign(props) {
                 navigate(`/myProcess/${id}/editaddress`);
             else if (nextPage === 'myList')
                 navigate(`/myProcess/${id}/myList`);
+            else
+                navigate(`/myProcess/${id}`);
         } else
             setAlertMessage(true);
     };
