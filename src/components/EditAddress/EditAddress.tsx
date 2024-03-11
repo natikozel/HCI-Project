@@ -93,6 +93,7 @@ export const EditAddress: FC<Props> = memo(function GalileoDesign(props = {}) {
                 card: oldCookie.card,
                 date: oldCookie.date,
                 id: oldCookie.id,
+                email: oldCookie.email,
                 payment: oldCookie.payment,
                 taxes: oldCookie.taxes,
                 zipcode: user.zipcode,
